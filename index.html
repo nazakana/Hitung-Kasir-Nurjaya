@@ -889,6 +889,365 @@
     vertical-align: middle;
     margin-right: 8px;
   }
+  
+/* --- SIDE TENGAH (CHIP HIJAU STYLING) --- */
+/* --- SIDE TENGAH (CHIP HIJAU RAMPING) --- */
+.side-center {
+  width: 210px;
+  flex: none;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  z-index: 5;
+}
+
+/* BRAND LOGO NJA KECIL */
+.center-brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  margin-top: 5px;
+}
+
+.logo-nja-img {
+  width: 65px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.4));
+}
+
+.brand-title .title-main {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+}
+
+.brand-title .title-sub {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #6ee7b7;
+  letter-spacing: 0.3px;
+}
+
+/* WRAPPER TOMBOL PRESS & RAMPING */
+.center-menu-chip-wrapper {
+  width: 100%;
+  background: rgba(6, 78, 59, 0.4);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: 16px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  backdrop-filter: blur(10px);
+  margin-bottom: 5px;
+}
+
+/* TOMBOL LEBIH RINGKAS */
+.btn-center-menu {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ecfdf5;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-center-menu svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* BRAND LOGO NJA */
+.center-brand-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.logo-nja-img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(52, 211, 153, 0.4));
+}
+
+.brand-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.brand-title .title-main {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.8px;
+}
+
+.brand-title .title-sub {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #6ee7b7;
+  letter-spacing: 0.5px;
+}
+
+/* CHIP CONTAINER (BUNGKUS TOMBOL) */
+.center-menu-chip-wrapper {
+  width: 100%;
+  background: rgba(6, 78, 59, 0.5);
+  border: 1px solid rgba(52, 211, 153, 0.25);
+  border-radius: 18px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  margin-bottom: 10px;
+}
+
+/* TOMBOL DI DALAM CHIP */
+.btn-center-menu {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  background: rgba(255, 255, 255, 0.06);
+  color: #ecfdf5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.btn-center-menu svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  stroke-width: 2;
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* AKSEN WARNA & HOVER PER TOMBOL */
+.btn-center-menu.btn-riwayat { color: #38bdf8; }
+.btn-center-menu.btn-riwayat:hover {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-center-menu.btn-portal { color: #c084fc; }
+.btn-center-menu.btn-portal:hover {
+  background: rgba(192, 132, 252, 0.18);
+  border-color: rgba(192, 132, 252, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-center-menu.btn-about { color: #34d399; }
+.btn-center-menu.btn-about:hover {
+  background: rgba(52, 211, 153, 0.18);
+  border-color: rgba(52, 211, 153, 0.4);
+  transform: translateY(-2px);
+}
+
+/* --- MODAL RIWAYAT LAPORAN PENDAPATAN --- */
+.modal-riwayat-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.45); /* Backdrop transparan gelap lembut */
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.modal-riwayat-overlay.active {
+  display: flex;
+}
+
+.modal-riwayat-card {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  background: #ffffff; /* Latar Putih Clean */
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.modal-riwayat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 12px;
+}
+
+.modal-riwayat-header h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a; /* Teks Utama Gelap */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+/* CONTAINER VIEWER GAMBAR JPG (LIGHT MODE & FIX SCROLL) */
+.viewer-jpg-container {
+  flex: 1;
+  min-height: 320px;
+  max-height: 55vh;
+  background: #f1f5f9; /* Background Abu Terang */
+  border: 2px dashed #cbd5e1;
+  border-radius: 14px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 12px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.viewer-jpg-container img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.viewer-placeholder {
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+  margin: auto 0;
+}
+
+/* SECTION FILTER TANGGAL (LIGHT MODE) */
+.modal-riwayat-card .date-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Responsif Mobile */
+@media (max-width: 900px) {
+  .center-menu-container {
+    width: 100%;
+    flex-direction: row;
+    order: 2; /* Pindah ke tengah/bawah saat layar kecil */
+  }
+  .btn-center-menu {
+    font-size: 0.75rem;
+    padding: 10px;
+    justify-content: center;
+  }
+}
+
+/* --- ANIMASI & CONTAINER ICON KASIR --- */
+.center-cashier-icon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 12px 0;
+  padding: 0 8px; /* Memberi jarak tipis dari pinggir chip */
+  box-sizing: border-box;
+  color: #34d399; /* Warna hijau neon lembut */
+}
+
+.cashier-svg {
+  width: 100%;          /* Membuat lebar SVG menyesuaikan penuh ke lebar chip */
+  max-width: 160px;     /* Menjaga agar tidak terlalu raksasa namun tetap fit & padat */
+  height: auto;         /* Menjaga rasio tinggi tetap presisi */
+  filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.45));
+}
+
+/* Animasi 1: Struk keluar-masuk perlahan */
+@keyframes receiptSlide {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Animasi 2: Pulsa/Lampu layar berkedip lembut */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* Class Animasi SVG */
+.anim-receipt {
+  animation: receiptSlide 2.5s ease-in-out infinite;
+}
+
+.anim-screen {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
 </style>
 </head>
 <body>
@@ -958,7 +1317,76 @@
 
       </div>
     </div>
+	
+	
+	
+<!-- SIDE TENGAH: CHIP HIJAU RAMPING -->
+  <div class="side-panel side-center">
+    
+    <!-- BRAND LOGO -->
+    <div class="center-brand-logo">
+      <img src="https://lh3.googleusercontent.com/d/1l597cDOHNEE-B1G1vAbkeDaXfnMTycOO" alt="Logo NJA" class="logo-nja-img">
+      <div class="brand-title">
+        <span class="title-main">HITUNG KASIR</span>
+        <span class="title-sub">NURJAYA ABADI PHOTOCOPY</span>
+      </div>
+    </div>
 
+    <!-- ICON SVG KASIR ANIMATED LOOP -->
+    <div class="center-cashier-icon">
+      <svg class="cashier-svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Struk Belanja (Animated Loop Slide) -->
+        <g class="anim-receipt">
+          <path d="M24 18V8l4 2 4-2 4 2 4-2 4 2 4-2v10" stroke-width="2.5" stroke="#a7f3d0"/>
+          <line x1="28" y1="12" x2="40" y2="12" stroke-width="2" stroke="#a7f3d0"/>
+          <line x1="28" y1="15" x2="36" y2="15" stroke-width="2" stroke="#a7f3d0"/>
+        </g>
+        
+        <!-- Bodi Mesin Kasir / POS Terminal -->
+        <rect x="14" y="22" width="36" height="26" rx="4" stroke-width="2.5"/>
+        
+        <!-- Layar Kasir (Animated Pulse) -->
+        <rect class="anim-screen" x="18" y="26" width="28" height="12" rx="2" fill="rgba(52, 211, 153, 0.2)" stroke-width="2"/>
+        <line class="anim-screen" x1="22" y1="32" x2="32" y2="32" stroke-width="2"/>
+        
+        <!-- Laci Uang / Cash Drawer -->
+        <path d="M14 42h36v6a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2v-6z" stroke-width="2.5"/>
+        <circle cx="32" cy="46" r="1.5" fill="currentColor"/>
+      </svg>
+    </div>
+
+    <!-- WRAPPER TOMBOL -->
+    <div class="center-menu-chip-wrapper">
+      <button class="btn-center-menu btn-riwayat" id="btnOpenRiwayat">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 8v4l3 3"></path>
+          <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"></path>
+        </svg>
+        <span>Riwayat Kasir</span>
+      </button>
+
+      <a href="https://nazakana.github.io/nsa/" target="_blank" class="btn-center-menu btn-portal" id="btnPortalNSA">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="2" y1="12" x2="22" y2="12"></line>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+        </svg>
+        <span>Portal NSA</span>
+      </a>
+
+      <button class="btn-center-menu btn-about" id="btnTentangApp">
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <span>Tentang App</span>
+      </button>
+    </div>
+
+  </div>
+  
+  
     <!-- SIDE KANAN: KASIR B (UNGU) -->
     <div class="side-panel side-right" id="sideRight">
       
@@ -2009,6 +2437,8 @@
         backdrop.style.display = 'none';
       }
     }
+	
+	
 </script>
 
   <!-- MODAL POPUP ALERT FULLSCREEN -->
@@ -2050,6 +2480,271 @@
         .catch((err) => console.error('Service Worker Gagal Registrasi:', err));
     });
   }
+</script>
+
+<!-- MODAL: RIWAYAT LAPORAN PENDAPATAN -->
+<div class="modal-riwayat-overlay" id="modalRiwayatOverlay">
+  <div class="modal-riwayat-card">
+    
+    <div class="modal-riwayat-header">
+      <h3>
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #0284c7; fill: none; stroke-width: 2;">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+        <span>Riwayat Laporan Pendapatan</span>
+      </h3>
+      <button class="btn-back" id="btnCloseRiwayat" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1;">✕ Tutup</button>
+    </div>
+
+    <div class="date-section" style="margin-bottom: 0;">
+      <div class="date-display" id="dateDisplayRiwayat" style="color: #0f172a; font-size: 0.85rem; font-weight: 700;">
+        Pilih Tanggal
+      </div>
+      
+      <div style="display: flex; gap: 8px; align-items: center;">
+        <div onclick="const p = document.getElementById('datePickerRiwayat'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #0284c7; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);">
+          <input type="date" id="datePickerRiwayat" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
+          <svg viewBox="0 0 24 24" style="width: 14px; height: 14px; stroke: currentColor; stroke-width: 2; fill: none; pointer-events: none;">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span style="pointer-events: none;">Pilih</span>
+        </div>
+
+        <button class="btn-save" id="btnCariRiwayat" style="padding: 6px 14px; font-size: 0.8rem; background: #0f172a; color: #ffffff; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
+          Cari Data
+        </button>
+      </div>
+    </div>
+
+    <div class="viewer-jpg-container" id="viewerJpgContainer">
+      <div class="viewer-placeholder" id="viewerPlaceholder">
+        Pilih tanggal dan klik <b>'Cari Data'</b> untuk menampilkan Laporan Pendapatan.
+      </div>
+      <img id="imgViewerRiwayat" src="" alt="Struk Riwayat" style="display: none;">
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ==========================================
+// KONFIGURASI WEB APP GOOGLE APPS SCRIPT
+// ==========================================
+const API_URL = "https://script.google.com/macros/s/AKfycbyqCNYl_CAwdfXRa3It-r99yZnSyC6jXgxzGNgICTCQJtxhZiQu88cuCvBVRjhWFkGdFw/exec";
+
+// ==========================================
+// 1. ELEMEN DOM MENU TENGAH & MODAL RIWAYAT
+// ==========================================
+const btnOpenRiwayat = document.getElementById('btnOpenRiwayat');
+const btnCloseRiwayat = document.getElementById('btnCloseRiwayat');
+const modalRiwayatOverlay = document.getElementById('modalRiwayatOverlay');
+
+const datePickerRiwayat = document.getElementById('datePickerRiwayat');
+const dateDisplayRiwayat = document.getElementById('dateDisplayRiwayat');
+const btnCariRiwayat = document.getElementById('btnCariRiwayat');
+
+const viewerJpgContainer = document.getElementById('viewerJpgContainer');
+const viewerPlaceholder = document.getElementById('viewerPlaceholder');
+const imgViewerRiwayat = document.getElementById('imgViewerRiwayat');
+
+// ==========================================
+// 2. EVENT LISTENER OPEN & CLOSE MODAL
+// ==========================================
+
+// Buka Modal Riwayat
+if (btnOpenRiwayat) {
+  btnOpenRiwayat.addEventListener('click', () => {
+    modalRiwayatOverlay.classList.add('active');
+  });
+}
+
+// Tutup Modal Riwayat
+if (btnCloseRiwayat) {
+  btnCloseRiwayat.addEventListener('click', () => {
+    modalRiwayatOverlay.classList.remove('active');
+  });
+}
+
+// Tutup Modal ketika klik area luar card (Overlay)
+if (modalRiwayatOverlay) {
+  modalRiwayatOverlay.addEventListener('click', (e) => {
+    if (e.target === modalRiwayatOverlay) {
+      modalRiwayatOverlay.classList.remove('active');
+    }
+  });
+}
+
+// Format & Update Teks Display saat Tanggal Dipilih (DD-MM-YYYY)
+if (datePickerRiwayat) {
+  datePickerRiwayat.addEventListener('change', (e) => {
+    const val = e.target.value; // Format default input: YYYY-MM-DD
+    if (val) {
+      const parts = val.split('-');
+      const formattedDate = `${parts[2]}-${parts[1]}-${parts[0]}`; // Ubah ke DD-MM-YYYY
+      dateDisplayRiwayat.innerText = formattedDate;
+    } else {
+      dateDisplayRiwayat.innerText = "Pilih Tanggal";
+    }
+  });
+}
+
+// ==========================================
+// 3. FUNGSI FETCH CARI DATA RIWAYAT (doGet)
+// ==========================================
+if (btnCariRiwayat) {
+  btnCariRiwayat.addEventListener('click', async () => {
+    const rawDate = datePickerRiwayat.value;
+
+    if (!rawDate) {
+      alert("Silakan pilih tanggal terlebih dahulu!");
+      return;
+    }
+
+    // Format tanggal ke DD-MM-YYYY agar sesuai dengan penamaan file di Google Drive
+    const parts = rawDate.split('-');
+    const searchTarget = `${parts[2]}-${parts[1]}-${parts[0]}`;
+
+    // Status Loading pada Tombol & Viewer
+    btnCariRiwayat.disabled = true;
+    btnCariRiwayat.innerHTML = `<span class="btn-spinner" style="width:14px; height:14px; border-width:2px;"></span> Memuat...`;
+
+    imgViewerRiwayat.style.display = 'none';
+    viewerPlaceholder.style.display = 'block';
+    viewerPlaceholder.innerHTML = `<div style="text-align:center;">
+      <span class="btn-spinner" style="width:24px; height:24px; border-width:3px; margin-bottom:8px;"></span>
+      <p>Mencari Laporan Pendapatan tanggal <b>${searchTarget}</b> di NSA CLOUD...</p>
+    </div>`;
+
+    try {
+      // Panggil doGet Apps Script dengan Query Parameter search
+      const response = await fetch(`${API_URL}?search=${encodeURIComponent(searchTarget)}`);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP Error: ${response.status}`);
+      }
+
+      const result = await response.json();
+
+      if (result.status === 'success' && result.data && result.data.length > 0) {
+        // Ambil file pertama yang ditemukan
+        const fileStruk = result.data[0];
+
+        // Tampilkan gambar di viewer
+        imgViewerRiwayat.src = fileStruk.imageUrl;
+        imgViewerRiwayat.onload = () => {
+          viewerPlaceholder.style.display = 'none';
+          imgViewerRiwayat.style.display = 'block';
+        };
+        imgViewerRiwayat.onerror = () => {
+          viewerPlaceholder.style.display = 'block';
+          viewerPlaceholder.innerHTML = `<span style="color:#ef4444;">Gagal memuat gambar dari NSA CLOUD!</span>`;
+        };
+
+      } else {
+        // Data tidak ditemukan
+        viewerPlaceholder.style.display = 'block';
+        viewerPlaceholder.innerHTML = `<span style="color:#f59e0b;">Data Laporan Pendapatan untuk tanggal <b>${searchTarget}</b> tidak ditemukan.</span>`;
+      }
+
+    } catch (error) {
+      console.error("Error Fetching Riwayat:", error);
+      viewerPlaceholder.style.display = 'block';
+      viewerPlaceholder.innerHTML = `<span style="color:#ef4444;">Terjadi kesalahan sistem: ${error.message}</span>`;
+    } finally {
+      // Kembalikan Tombol ke Status Semula
+      btnCariRiwayat.disabled = false;
+      btnCariRiwayat.innerHTML = `Cari Data`;
+    }
+  });
+}
+</script>
+
+<div class="modal-riwayat-overlay" id="modalAboutOverlay">
+  <div class="modal-riwayat-card" style="max-width: 440px;">
+    
+    <div class="modal-riwayat-header">
+      <h3>
+        <svg viewBox="0 0 24 24" style="width: 20px; height: 20px; stroke: #10b981; fill: none; stroke-width: 2;">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="16" x2="12" y2="12"></line>
+          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
+        <span>Tentang Aplikasi</span>
+      </h3>
+      <button class="btn-back" id="btnCloseAbout" style="background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1;">✕ Tutup</button>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 16px; padding: 4px 0;">
+      
+      <div style="text-align: center; border-bottom: 1px dashed #e2e8f0; padding-bottom: 14px;">
+        <h2 style="font-size: 1.15rem; font-weight: 800; color: #0f172a; margin: 0 0 4px 0; tracking: -0.02em;">ALAT HITUNG KASIR</h2>
+        <div style="font-size: 0.9rem; font-weight: 600; color: #0284c7; margin-bottom: 8px;">Nurjaya Abadi Photocopy</div>
+        <span style="display: inline-block; background: #e0f2fe; color: #0369a1; border: 1px solid #bae6fd; font-size: 0.75rem; font-weight: 700; padding: 3px 10px; border-radius: 20px;">
+          v1.0.18.26 Stable
+        </span>
+      </div>
+
+      <div style="font-size: 0.85rem; color: #334155; line-height: 1.5; background: #f8fafc; border: 1px solid #e2e8f0; padding: 12px 14px; border-radius: 12px;">
+        <p style="margin: 0 0 8px 0;">
+          Aplikasi ini dibuat untuk mengefisiensi proses penutupan kasir & operasional harian di <b>Nurjaya Abadi Photocopy</b>, yang telah disinkronkan secara presisi dengan metode perhitungan resmi sesuai aturan oto Owner.
+        </p>
+        <p style="margin: 0;">
+          Seluruh data transaksi terintegrasi penuh dengan <b>NSA Cloud</b> dan berfungsi sebagai arsip digital otomatis yang mudah diakses untuk kebutuhan rekapitulasi.
+        </p>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; background: #ffffff; border: 1px solid #e2e8f0; padding: 10px 14px; border-radius: 12px; box-shadow: 0 2px 4px rgba(0,0,0,0.02);">
+        <span style="font-size: 0.8rem; font-weight: 600; color: #64748b;">Maintainer</span>
+        
+        <a href="https://github.com/nazakana" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; background: #0f172a; color: #ffffff; text-decoration: none; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; transition: background 0.2s;">
+          <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; fill: currentColor;">
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>@Nazakana</span>
+        </a>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ==========================================
+// ELEMEN & EVENT LISTENER MODAL TENTANG APP
+// ==========================================
+const btnTentangApp = document.getElementById('btnTentangApp');
+const modalAboutOverlay = document.getElementById('modalAboutOverlay');
+const btnCloseAbout = document.getElementById('btnCloseAbout');
+
+// Buka Modal Tentang App
+if (btnTentangApp && modalAboutOverlay) {
+  btnTentangApp.addEventListener('click', () => {
+    modalAboutOverlay.classList.add('active');
+  });
+}
+
+// Tutup Modal via Tombol Tutup
+if (btnCloseAbout && modalAboutOverlay) {
+  btnCloseAbout.addEventListener('click', () => {
+    modalAboutOverlay.classList.remove('active');
+  });
+}
+
+// Tutup Modal via Klik Area Overlay (Luar Card)
+if (modalAboutOverlay) {
+  modalAboutOverlay.addEventListener('click', (e) => {
+    if (e.target === modalAboutOverlay) {
+      modalAboutOverlay.classList.remove('active');
+    }
+  });
+}
 </script>
 
 </body>
