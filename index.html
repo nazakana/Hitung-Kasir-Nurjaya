@@ -160,7 +160,7 @@
 
   .flip-back {
     transform: rotateY(180deg);
-    padding: 18px;
+    padding: 10px;
     background: rgba(10, 20, 40, 0.98);
   }
 
@@ -168,7 +168,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 6px;
   }
 
   .btn-back {
@@ -184,13 +184,13 @@
   .date-section {
     background: var(--card-bg);
     border: 1px solid var(--card-border);
-    padding: 10px 14px;
-    border-radius: 12px;
-    margin-bottom: 12px;
+    padding: 4px 10px;
+    border-radius: 10px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 10px;
+    gap: 8px;
   }
 
   .date-section input[type="date"] {
@@ -209,27 +209,29 @@
     color: var(--text-sub);
   }
 
-  .table-container {
+.table-container {
     flex: 1;
-    overflow-y: auto;
+    min-height: 0;
+    overflow: hidden;
     border: 1px solid var(--card-border);
     border-radius: 10px;
     background: rgba(0, 0, 0, 0.2);
+    display: block; /* Pastikan memblok penuh area flex yang tersisa */
   }
 
   .table-kasir {
     width: 100%;
+    height: 100%;
     border-collapse: collapse;
     table-layout: fixed;
   }
 
   .table-kasir th {
-    position: sticky;
-    top: 0;
     background: var(--blue-dark);
     color: white;
-    padding: 8px 4px;
-    font-size: 0.8rem;
+    padding: 0;
+    font-size: 0.75rem;
+    height: 22px; /* Kunci fix tinggi header */
     border: 1px solid var(--card-border);
     text-align: center;
     z-index: 2;
@@ -238,17 +240,23 @@
   .table-kasir td {
     border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 0;
+    position: relative; /* Wadah penting agar input bisa absolute ke dalam sel */
   }
 
   .table-kasir input {
+    position: absolute; /* Melepas input dari flow tabel, sehingga tabel bisa menyusut maksimal mengikuti ukuran layar */
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 32px;
+    height: 100%;
+    min-height: 0;
+    box-sizing: border-box;
     background: transparent;
     border: none;
     color: white;
     text-align: right;
-    padding: 0 6px;
-    font-size: 0.85rem;
+    padding: 0 4px;
+    font-size: 0.75rem;
     outline: none;
   }
 
@@ -263,7 +271,7 @@
   }
 
   .footer-actions {
-    margin-top: 12px;
+    margin-top: 6px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -371,7 +379,6 @@
   }
 
   /* --- SLIDE 3 OVERLAY FULLSCREEN --- */
-  /* --- SLIDE 3 OVERLAY FULLSCREEN --- */
   .slide3-overlay {
     position: fixed;
     top: 0;
@@ -394,7 +401,6 @@
     opacity: 1;
   }
 
-  /* Animasi menyembul ringan tanpa blur untuk PC kentang */
   /* Animasi menyembul ringan tanpa blur untuk PC kentang (Masuk & Keluar) */
   @keyframes popFromLeft {
     0% { transform: translateX(-100px); opacity: 0; }
@@ -450,24 +456,30 @@
     margin: 0 auto;
   }
 
-/* ========================================================= */
   /* --- FIX RENDER EXPORT JPG & DISPLAY UI --- */
-  /* ========================================================= */
+  .slide3-container {
+    display: flex !important;
+    align-items: stretch !important;
+    justify-content: center;
+    gap: 20px;
+    height: 90vh;
+    max-height: 90vh;
+    box-sizing: border-box;
+  }
 
   .slide3-left-paper {
-    width: 450px !important; /* Fixed width agar hasil render JPG tidak tertekan */
+    width: 450px !important;
     max-width: 100% !important;
-    height: auto !important;
-    min-height: 96vh;
+    height: 100% !important;
     background: #ffffff;
-    border-radius: 12px;
-    padding: 14px 16px !important; /* Padding seimbang */
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    padding: 20px 24px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    margin: 0 !important;
-    flex-shrink: 0;
+    justify-content: space-between;
     box-sizing: border-box;
+    margin: 0 !important;
   }
 
   .printable-sheet-wrapper {
@@ -486,7 +498,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 11.5px !important; /* Gunakan px konsisten untuk ekspor */
+    font-size: 11.5px !important;
     line-height: 1.3 !important;
   }
 
@@ -539,7 +551,7 @@
     align-items: center;
     margin-bottom: 2px !important;
     font-weight: 400;
-    white-space: nowrap; /* Mencegah teks tertekuk ke bawah saat render */
+    white-space: nowrap;
   }
 
   .sheet-row.row-bold {
@@ -559,10 +571,6 @@
     line-height: 1.2 !important;
     flex-shrink: 0;
   }
-  
-  
-  
-  
 
   /* Alert Allocation: 2 baris, rata kiri */
   #allocation_alert {
@@ -585,7 +593,6 @@
   }
 
   /* Input Inline untuk Override */
-  /* Input Inline untuk Override (Diperbaiki agar teks tidak turun) */
   .input-inline-sheet {
     border: 1px solid #cbd5e1;
     background: #fff;
@@ -611,8 +618,6 @@
     flex-shrink: 0;
   }
 
-  
-
   .badge-warning {
     display: inline-block;
     background-color: #fff1f2;
@@ -626,17 +631,19 @@
     vertical-align: middle;
   }
 
-  /* ========================================================= */
-
-  /* Area Kanan Guide Text */
   /* Area Kanan Guide Text */
   .slide3-right-guide {
     flex: 1;
     max-width: 680px;
+    height: 100% !important;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px 24px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
   }
 
   /* Animasi Jalur Masuk (Triggered by Active Overlay) */
@@ -718,10 +725,8 @@
     stroke-linejoin: round;
   }
 
- 
-
   /* --- MODAL ALERT LIGHTWEIGHT FLAT STYLE --- */
- .custom-modal-backdrop {
+  .custom-modal-backdrop {
     position: fixed !important;
     top: 0 !important;
     left: 0 !important;
@@ -828,49 +833,31 @@
     background: #059669;
   }
 
-  @media (max-width: 900px) {
-    .app-container {
-      flex-direction: column;
-      height: auto;
-    }
-    .side-panel {
-      height: 650px;
-    }
-    .slide3-content-wrapper {
-      flex-direction: column;
-      overflow-y: auto;
-    }
-    
-    .slide3-right-guide {
-      width: 100%;
-      height: auto;
-    }
-  }
   /* Memberikan indentasi/jarak menjorok untuk sub-item */
-.sub-content {
-  padding-left: 12px !important; /* Menjorokkan isi sub-group */
-}
+  .sub-content {
+    padding-left: 12px !important;
+  }
 
-.sub-item-label {
-  padding-left: 10px !important; /* Menjorokkan teks label sub-poin */
-}
+  .sub-item-label {
+    padding-left: 10px !important;
+  }
 
-/* LEVEL 1: Menjorokkan Angka (1, 2, 3) di bawah Judul Utama (A, B, C) */
-.section-content .item-label {
-  padding-left: 14px !important;
-}
+  /* LEVEL 1: Menjorokkan Angka (1, 2, 3) di bawah Judul Utama (A, B, C) */
+  .section-content .item-label {
+    padding-left: 14px !important;
+  }
 
-/* LEVEL 2: Menjorokkan Huruf (a, b) di bawah Angka (1, 2, 3) */
-.sub-content .sub-item-label {
-  padding-left: 28px !important;
-}
+  /* LEVEL 2: Menjorokkan Huruf (a, b) di bawah Angka (1, 2, 3) */
+  .sub-content .sub-item-label {
+    padding-left: 28px !important;
+  }
 
-/* Khusus untuk judul sub-group seperti "1. Penjualan Meterai" */
-.sub-group .bold-label {
-  padding-left: 14px !important;
-}
+  /* Khusus untuk judul sub-group seperti "1. Penjualan Meterai" */
+  .sub-group .bold-label {
+    padding-left: 14px !important;
+  }
 
-/* Animasi Spinner Berputar */
+  /* Animasi Spinner Berputar */
   @keyframes spinBtn {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
@@ -888,364 +875,295 @@
     margin-right: 8px;
   }
   
-/* --- SIDE TENGAH (CHIP HIJAU STYLING) --- */
-/* --- SIDE TENGAH (CHIP HIJAU RAMPING) --- */
-.side-center {
-  width: 210px;
-  flex: none;
-  height: 100%;
-  border-radius: 20px;
-  background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
-  border: 1px solid rgba(52, 211, 153, 0.3);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  padding: 20px 12px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  box-sizing: border-box;
-  z-index: 5;
-}
+  /* --- SIDE TENGAH (CHIP HIJAU RAMPING) --- */
+  .side-center {
+    width: 210px;
+    flex: none;
+    height: 100%;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
+    border: 1px solid rgba(52, 211, 153, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    padding: 20px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    z-index: 5;
+  }
 
-/* BRAND LOGO NJA KECIL */
-.center-brand-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  text-align: center;
-  margin-top: 5px;
-}
+  /* BRAND LOGO NJA */
+  .center-brand-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    text-align: center;
+    margin-top: 5px;
+  }
 
-.logo-nja-img {
-  width: 65px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 10px rgba(52, 211, 153, 0.4));
-}
+  .logo-nja-img {
+    width: 80px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 14px rgba(52, 211, 153, 0.4));
+  }
 
-.brand-title .title-main {
-  font-size: 0.9rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-}
+  .brand-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
 
-.brand-title .title-sub {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: #6ee7b7;
-  letter-spacing: 0.3px;
-}
+  .brand-title .title-main {
+    font-size: 0.95rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+  }
 
-/* WRAPPER TOMBOL PRESS & RAMPING */
-.center-menu-chip-wrapper {
-  width: 100%;
-  background: rgba(6, 78, 59, 0.4);
-  border: 1px solid rgba(52, 211, 153, 0.25);
-  border-radius: 16px;
-  padding: 8px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  backdrop-filter: blur(10px);
-  margin-bottom: 5px;
-}
+  .brand-title .title-sub {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #6ee7b7;
+    letter-spacing: 0.3px;
+  }
 
-/* TOMBOL LEBIH RINGKAS */
-.btn-center-menu {
-  width: 100%;
-  padding: 10px 10px;
-  border-radius: 10px;
-  border: 1px solid rgba(52, 211, 153, 0.2);
-  background: rgba(255, 255, 255, 0.06);
-  color: #ecfdf5;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.btn-center-menu svg {
-  width: 16px;
-  height: 16px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
-  flex-shrink: 0;
-}
-
-/* BRAND LOGO NJA */
-.center-brand-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-align: center;
-  margin-top: 10px;
-}
-
-.logo-nja-img {
-  width: 80px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 14px rgba(52, 211, 153, 0.4));
-}
-
-.brand-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-}
-
-.brand-title .title-main {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: #ffffff;
-  letter-spacing: 0.8px;
-}
-
-.brand-title .title-sub {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #6ee7b7;
-  letter-spacing: 0.5px;
-}
-
-/* CHIP CONTAINER (BUNGKUS TOMBOL) */
-.center-menu-chip-wrapper {
-  width: 100%;
-  background: rgba(6, 78, 59, 0.5);
-  border: 1px solid rgba(52, 211, 153, 0.25);
-  border-radius: 18px;
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  backdrop-filter: blur(10px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-  margin-bottom: 10px;
-}
-
-/* TOMBOL DI DALAM CHIP */
-.btn-center-menu {
-  width: 100%;
-  padding: 12px 14px;
-  border-radius: 12px;
-  border: 1px solid rgba(52, 211, 153, 0.2);
-  background: rgba(255, 255, 255, 0.06);
-  color: #ecfdf5;
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.btn-center-menu svg {
-  width: 18px;
-  height: 18px;
-  stroke: currentColor;
-  stroke-width: 2;
-  fill: none;
-  flex-shrink: 0;
-}
-
-/* AKSEN WARNA & HOVER PER TOMBOL */
-.btn-center-menu.btn-riwayat { color: #38bdf8; }
-.btn-center-menu.btn-riwayat:hover {
-  background: rgba(56, 189, 248, 0.18);
-  border-color: rgba(56, 189, 248, 0.4);
-  transform: translateY(-2px);
-}
-
-.btn-center-menu.btn-portal { color: #c084fc; }
-.btn-center-menu.btn-portal:hover {
-  background: rgba(192, 132, 252, 0.18);
-  border-color: rgba(192, 132, 252, 0.4);
-  transform: translateY(-2px);
-}
-
-.btn-center-menu.btn-about { color: #34d399; }
-.btn-center-menu.btn-about:hover {
-  background: rgba(52, 211, 153, 0.18);
-  border-color: rgba(52, 211, 153, 0.4);
-  transform: translateY(-2px);
-}
-
-/* --- MODAL RIWAYAT LAPORAN PENDAPATAN --- */
-.modal-riwayat-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(15, 23, 42, 0.45); /* Backdrop transparan gelap lembut */
-  backdrop-filter: blur(8px);
-  z-index: 9999;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  padding: 15px;
-}
-
-.modal-riwayat-overlay.active {
-  display: flex;
-}
-
-.modal-riwayat-card {
-  width: 100%;
-  max-width: 520px;
-  max-height: 90vh;
-  background: #ffffff; /* Latar Putih Clean */
-  border: 1px solid #e2e8f0;
-  border-radius: 20px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
-}
-
-.modal-riwayat-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #f1f5f9;
-  padding-bottom: 12px;
-}
-
-.modal-riwayat-header h3 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: #0f172a; /* Teks Utama Gelap */
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0;
-}
-
-/* CONTAINER VIEWER GAMBAR JPG (LIGHT MODE & FIX SCROLL) */
-.viewer-jpg-container {
-  flex: 1;
-  min-height: 320px;
-  max-height: 55vh;
-  background: #f1f5f9; /* Background Abu Terang */
-  border: 2px dashed #cbd5e1;
-  border-radius: 14px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding: 12px;
-  position: relative;
-  box-sizing: border-box;
-}
-
-.viewer-jpg-container img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
-  margin: 0 auto;
-  display: block;
-  flex-shrink: 0;
-}
-
-.viewer-placeholder {
-  color: #64748b;
-  font-size: 0.85rem;
-  font-weight: 500;
-  text-align: center;
-  margin: auto 0;
-}
-
-/* SECTION FILTER TANGGAL (LIGHT MODE) */
-.modal-riwayat-card .date-section {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-/* Responsif Mobile */
-@media (max-width: 900px) {
-  .center-menu-container {
+  /* WRAPPER TOMBOL PRESS & RAMPING */
+  .center-menu-chip-wrapper {
     width: 100%;
-    flex-direction: row;
-    order: 2; /* Pindah ke tengah/bawah saat layar kecil */
-  }
-  .btn-center-menu {
-    font-size: 0.75rem;
+    background: rgba(6, 78, 59, 0.5);
+    border: 1px solid rgba(52, 211, 153, 0.25);
+    border-radius: 16px;
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    margin-bottom: 5px;
+  }
+
+  /* TOMBOL LEBIH RINGKAS */
+  .btn-center-menu {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+    background: rgba(255, 255, 255, 0.06);
+    color: #ecfdf5;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    box-sizing: border-box;
+  }
+
+  .btn-center-menu svg {
+    width: 16px;
+    height: 16px;
+    stroke: currentColor;
+    stroke-width: 2;
+    fill: none;
+    flex-shrink: 0;
+  }
+
+  /* AKSEN WARNA & HOVER PER TOMBOL */
+  .btn-center-menu.btn-riwayat { color: #38bdf8; }
+  .btn-center-menu.btn-riwayat:hover {
+    background: rgba(56, 189, 248, 0.18);
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-center-menu.btn-portal { color: #c084fc; }
+  .btn-center-menu.btn-portal:hover {
+    background: rgba(192, 132, 252, 0.18);
+    border-color: rgba(192, 132, 252, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .btn-center-menu.btn-about { color: #34d399; }
+  .btn-center-menu.btn-about:hover {
+    background: rgba(52, 211, 153, 0.18);
+    border-color: rgba(52, 211, 153, 0.4);
+    transform: translateY(-2px);
+  }
+
+  /* --- MODAL RIWAYAT LAPORAN PENDAPATAN --- */
+/* --- MODAL RIWAYAT LAPORAN PENDAPATAN --- */
+  .modal-riwayat-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.45);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    padding: 15px;
+    
+    /* Murni Fade-In & Fade-Out Ringan */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
   }
-}
 
-/* --- ANIMASI & CONTAINER ICON KASIR --- */
-.center-cashier-icon {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 12px 0;
-  padding: 0 8px; /* Memberi jarak tipis dari pinggir chip */
-  box-sizing: border-box;
-  color: #34d399; /* Warna hijau neon lembut */
-}
-
-.cashier-svg {
-  width: 100%;          /* Membuat lebar SVG menyesuaikan penuh ke lebar chip */
-  max-width: 160px;     /* Menjaga agar tidak terlalu raksasa namun tetap fit & padat */
-  height: auto;         /* Menjaga rasio tinggi tetap presisi */
-  filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.45));
-}
-
-/* Animasi 1: Struk keluar-masuk perlahan */
-@keyframes receiptSlide {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-/* Animasi 2: Pulsa/Lampu layar berkedip lembut */
-@keyframes pulseGlow {
-  0%, 100% {
+  .modal-riwayat-overlay.active {
     opacity: 1;
+    visibility: visible;
   }
-  50% {
-    opacity: 0.35;
+
+  .modal-riwayat-card {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
   }
-}
 
-/* Class Animasi SVG */
-.anim-receipt {
-  animation: receiptSlide 2.5s ease-in-out infinite;
-}
+  .modal-riwayat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 12px;
+  }
 
-.anim-screen {
-  animation: pulseGlow 2s ease-in-out infinite;
-}
+  .modal-riwayat-header h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+  }
+
+  /* CONTAINER VIEWER GAMBAR JPG */
+  .viewer-jpg-container {
+    flex: 1;
+    min-height: 320px;
+    max-height: 55vh;
+    background: #f1f5f9;
+    border: 2px dashed #cbd5e1;
+    border-radius: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 12px;
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  .viewer-jpg-container img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    margin: 0 auto;
+    display: block;
+    flex-shrink: 0;
+  }
+
+  .viewer-placeholder {
+    color: #64748b;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    margin: auto 0;
+  }
+
+  .modal-riwayat-card .date-section {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  /* --- ANIMASI & CONTAINER ICON KASIR --- */
+  .center-cashier-icon {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 0;
+    padding: 0 8px;
+    box-sizing: border-box;
+    color: #34d399;
+  }
+
+  .cashier-svg {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.45));
+  }
+
+  @keyframes receiptSlide {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
+  }
+
+  .anim-receipt { animation: receiptSlide 2.5s ease-in-out infinite; }
+  .anim-screen { animation: pulseGlow 2s ease-in-out infinite; }
+
+  /* Responsif Mobile Media Query */
+  @media (max-width: 900px) {
+    .app-container {
+      flex-direction: column;
+      height: auto;
+    }
+    .side-panel {
+      height: 650px;
+    }
+    .slide3-content-wrapper {
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .slide3-right-guide {
+      width: 100%;
+      height: auto;
+    }
+    .center-menu-container {
+      width: 100%;
+      flex-direction: row;
+      order: 2;
+    }
+    .btn-center-menu {
+      font-size: 0.75rem;
+      padding: 10px;
+      justify-content: center;
+    }
+  }
 </style>
 </head>
 <body>
@@ -1404,23 +1322,18 @@
         </div>
 
         <div class="date-section" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.08); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(167, 139, 250, 0.3);">
-  
-  <div class="date-display" id="dateDisplayB" style="color: var(--text-sub-purple); font-size: 0.9rem; font-weight: 600;">Pilih Tanggal</div>
-  
-  <div onclick="const p = document.getElementById('datePickerB'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #7c3aed; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
-    
-    <input type="date" id="datePickerB" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
-    
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-      <line x1="16" y1="2" x2="16" y2="6"></line>
-      <line x1="8" y1="2" x2="8" y2="6"></line>
-      <line x1="3" y1="10" x2="21" y2="10"></line>
-    </svg>
-    <span style="pointer-events: none;">Pilih Tanggal</span>
-  </div>
-
-</div>
+          <div class="date-display" id="dateDisplayB" style="color: var(--text-sub-purple); font-size: 0.9rem; font-weight: 600;">Pilih Tanggal</div>
+          <div onclick="const p = document.getElementById('datePickerB'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #7c3aed; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
+            <input type="date" id="datePickerB" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
+            <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;">
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <span style="pointer-events: none;">Pilih Tanggal</span>
+          </div>
+        </div>
 
         <div class="form-container-scroll">
           <div class="form-group-block">
@@ -1431,6 +1344,11 @@
           <div class="form-group-block">
             <label for="stok_meterai_malam">b) Stok Meterai Malam (buah)</label>
             <input type="number" id="stok_meterai_malam" class="form-control-custom no-scroll" placeholder="Contoh: 5">
+          </div>
+
+          <div class="form-group-block">
+            <label for="meterai_terjual_qris">Penjualan Meterai QRIS (buah)</label>
+            <input type="number" id="meterai_terjual_qris" class="form-control-custom no-scroll" placeholder="Contoh: 2">
           </div>
 
           <div class="form-group-block">
@@ -1455,6 +1373,11 @@
               <option value="2">2 Karyawan</option>
             </select>
           </div>
+
+          <div class="form-group-block">
+            <label for="pendapatan_qris">Pendapatan QRIS</label>
+            <input type="text" id="pendapatan_qris" class="form-control-custom input-rupiah" placeholder="Rp 0">
+          </div>
         </div>
 
         <button class="btn-rounded btn-rounded-purple" id="btnHitungKasir">Input Data dan Hitung</button>
@@ -1463,6 +1386,9 @@
     </div>
 
   </div>
+
+
+
 
 
 
@@ -1603,22 +1529,19 @@
 </div>
 
 <!-- SISI KANAN: PANDUAN LANGKAH & AKSI TOMBOL -->
-<div class="slide3-right-guide" style="display: flex; flex-direction: column; justify-content: space-between; height: 98vh; max-height: 98vh; box-sizing: border-box; flex: 1; max-width: 720px; padding: 0;">
+<div class="slide3-right-guide ios-guide-card" style="background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); padding: 18px 22px; border-radius: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 98vh; max-height: 98vh; box-sizing: border-box; flex: 1; max-width: 680px; margin: 0;">
   
-  <div style="display: flex; justify-content: flex-end; width: 100%; flex-shrink: 0; margin-bottom: 8px;">
-    <button class="btn-back" id="btnBackToStep2" style="background: rgba(255,255,255,0.18); color: #fff; padding: 8px 18px; font-weight: 600; font-size: 0.9rem; border-radius: 20px; cursor: pointer; border: none;">← Kembali</button>
-  </div>
-
-  <div class="ios-guide-card" style="background: #ffffff; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); padding: 18px 22px; border-radius: 20px; flex: 1; margin: 0 0 10px 0; display: flex; flex-direction: column; justify-content: flex-start; min-height: 0; box-sizing: border-box; gap: 10px;">
+  <!-- HEADER KANAN & TOMBOL KEMBALI DI DALAM KOTAK PUTIH -->
+  <div class="ios-guide-header" style="padding-bottom: 8px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
+    <div class="ios-guide-title" style="font-size: 1.25rem; color: #0f172a; font-weight: 800; display: flex; align-items: center; gap: 8px;">
+      <svg class="icon-header-chip" viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: #10b981;">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
+        <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
+      </svg>
+      <span>Tutup Kasir Telah Selesai</span>
+    </div>
     
-    <div class="ios-guide-header" style="padding-bottom: 8px; border-bottom: 1px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center; flex-shrink: 0;">
-      <div class="ios-guide-title" style="font-size: 1.25rem; color: #0f172a; font-weight: 800; display: flex; align-items: center; gap: 8px;">
-        <svg class="icon-header-chip" viewBox="0 0 24 24" style="width: 24px; height: 24px; stroke: #10b981;">
-          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></path>
-          <polyline points="22 4 12 14.01 9 11.01" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"></polyline>
-        </svg>
-        <span>Tutup Kasir Telah Selesai</span>
-      </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
       <svg class="icon-header-chip" viewBox="0 0 24 24" style="stroke: #6d28d9; width: 24px; height: 24px;">
         <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke-width="2" fill="none"></path>
         <polyline points="14 2 14 8 20 8" stroke-width="2" fill="none"></polyline>
@@ -1626,13 +1549,18 @@
         <line x1="16" y1="17" x2="8" y2="17" stroke-width="2"></line>
         <polyline points="10 9 9 9 8 9" stroke-width="2" fill="none"></polyline>
       </svg>
+      <!-- Tombol Kembali dipindah ke sini (warna disesuaikan untuk background putih) -->
+      <button class="btn-back" id="btnBackToStep2" style="background: #f1f5f9; color: #475569; padding: 6px 14px; font-weight: 600; font-size: 0.9rem; border-radius: 20px; cursor: pointer; border: none;">← Kembali</button>
     </div>
+  </div>
 
-    <p class="ios-guide-subtitle" style="font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-top: 2px; margin-bottom: 2px; line-height: 1.3; flex-shrink: 0;">
-      Silakan lakukan pemisahan uang fisik sesuai ketentuan berikut:
-    </p>
+  <p class="ios-guide-subtitle" style="font-size: 0.95rem; font-weight: 700; color: #1e293b; margin-top: 10px; margin-bottom: 2px; line-height: 1.3; flex-shrink: 0;">
+    Silakan lakukan pemisahan uang fisik sesuai ketentuan berikut:
+  </p>
 
-    <div class="guide-list" style="display: flex; flex-direction: column; gap: 8px; margin: 4px 0;">
+  <!-- KONTEN LIST (Diberi flex: 1 agar bisa scroll mandiri jika baris terlalu banyak) -->
+  <div style="flex: 1; overflow-y: auto; margin: 4px 0;">
+    <div class="guide-list" style="display: flex; flex-direction: column; gap: 8px;">
       
       <div class="guide-item" style="background: #f0fdf4; border: 1px solid #86efac; color: #166534; padding: 10px 20px; font-size: 0.92rem; font-weight: 600; border-radius: 9999px; display: flex; justify-content: space-between; align-items: center;">
         <span>1. Pokok Penjualan Meterai</span>
@@ -1667,7 +1595,8 @@
     </div>
   </div>
 
-  <div style="width: 100%; flex-shrink: 0;">
+  <!-- TOMBOL SELESAI DI DALAM KOTAK PUTIH -->
+  <div style="width: 100%; flex-shrink: 0; margin-top: 10px;">
     <button class="btn-rounded btn-rounded-purple" id="btnFinalSaveAndDownload" style="width: 100%; padding: 14px; font-size: 1rem; font-weight: 700; cursor: pointer;">SELESAI & SIMPAN KE DATABASE</button>
   </div>
 
@@ -1682,7 +1611,7 @@
   <script>
     const CONFIG = {
     API_URL_A: "https://script.google.com/macros/s/AKfycbw7YGYGSCY2OQJaZEpht-r8OZD6eqVoEH2M_QAeuy5YgIKP68hXHomnwcKhyejIUFK3/exec",
-    API_URL_B: "https://script.google.com/macros/s/AKfycbxDeixuNWsi24qKS3twSBNAxsKvem4YbyLfD-u-bcp-gXPXyioslB_bW7anYwsS1l71/exec",
+    API_URL_B: "https://script.google.com/macros/s/AKfycbwsB1-Pg5rewhEC_uAgoE52wqrDNWsTbMaj2t0QkqrY6-8UGqmGkeH0A9vOgdFtXP8z/exec",
     API_UPLOAD: "https://script.google.com/macros/s/AKfycbyqCNYl_CAwdfXRa3It-r99yZnSyC6jXgxzGNgICTCQJtxhZiQu88cuCvBVRjhWFkGdFw/exec"
   };
 
@@ -2030,9 +1959,11 @@
         sideRight.classList.remove('show-step2');
         document.getElementById('stok_meterai_pagi').value = '';
         document.getElementById('stok_meterai_malam').value = '';
+        document.getElementById('meterai_terjual_qris').value = '';
         document.getElementById('total_lembar_kasir').value = '';
         document.getElementById('total_koin_kasir').value = '';
         document.getElementById('pengeluaran_kasir').value = '';
+        document.getElementById('pendapatan_qris').value = '';
 
         showCustomModal('SUKSES', 'Data berhasil disimpan dan Laporan Pendapatan berhasil diunggah!');
       }, 200);
@@ -2069,10 +2000,12 @@
 
       const stokPagi = parseInt(document.getElementById('stok_meterai_pagi').value, 10) || 0;
       const stokMalam = parseInt(document.getElementById('stok_meterai_malam').value, 10) || 0;
+      const meteraiQris = parseInt(document.getElementById('meterai_terjual_qris').value, 10) || 0;
       const lembar = unformatRupiah(document.getElementById('total_lembar_kasir').value);
       const koin = unformatRupiah(document.getElementById('total_koin_kasir').value);
       const pengeluaran = unformatRupiah(document.getElementById('pengeluaran_kasir').value);
       const jlhKaryawan = parseInt(document.getElementById('karyawan_masuk').value, 10) || 1;
+      const pendapatanQris = unformatRupiah(document.getElementById('pendapatan_qris').value);
 
       const tabAEl = document.getElementById('s3_tabungan_a');
       const tabBEl = document.getElementById('s3_tabungan_b');
@@ -2094,7 +2027,9 @@
         karyawan_masuk: jlhKaryawan,
         tabungan_a: valTabA,
         tabungan_b: valTabB,
-        sisa_akhir: valSisaAkhir
+        sisa_akhir: valSisaAkhir,
+        meterai_terjual_qris: meteraiQris,
+        pendapatan_qris: pendapatanQris
       };
 
       await fetch(CONFIG.API_URL_B, {
@@ -2115,21 +2050,32 @@
   const tglAngka = d.getDate();
   const bulanTahun = getNamaBulanTahunIndo(d);
 
-  // 1. Indikator Loading di Tampilan Tanggal & Tombol Hitung
-  const originalDateText = dateDisplayB.innerText;
-  dateDisplayB.innerText = "Memuat Riwayat Data...";
-  dateDisplayB.style.opacity = "0.7";
+  // 1. LANGSUNG SET TANGGAL HARI INI / TERPILIH SECARA INSTAN (Sama seperti Kasir A)
+  dateDisplayB.innerText = formatDateIndonesia(d);
+  dateDisplayB.style.opacity = "0.5"; // Efek redup halus sebagai penanda proses sync
   btnHitungKasir.disabled = true;
 
   try {
     const url = `${CONFIG.API_URL_B}?bulan=${encodeURIComponent(bulanTahun)}&tanggal_angka=${tglAngka}`;
     const res = await fetch(url);
+    
+    // Validasi apakah respon yang diterima adalah JSON murni
+    const contentType = res.headers.get("content-type");
+    if (!res.ok || (contentType && !contentType.includes("application/json"))) {
+      throw new Error("Sistem Google Web App Kasir B belum siap atau mengembalikan halaman HTML/Error.");
+    }
+
     const result = await res.json();
 
     if (result.status === 'success' && result.data) {
       const data = result.data;
-      document.getElementById('stok_meterai_pagi').value = data.stok_meterai_pagi || '';
-      document.getElementById('stok_meterai_malam').value = data.stok_meterai_malam || '';
+      document.getElementById('stok_meterai_pagi').value = (data.stok_meterai_pagi !== undefined && data.stok_meterai_pagi !== null) ? data.stok_meterai_pagi : '';
+      document.getElementById('stok_meterai_malam').value = (data.stok_meterai_malam !== undefined && data.stok_meterai_malam !== null) ? data.stok_meterai_malam : '';
+      
+      // FIX INPUT QRIS: Memastikan nilai 0 tetap ditampilkan atau diisi dengan angka/string yang valid
+      document.getElementById('meterai_terjual_qris').value = (data.meterai_terjual_qris !== undefined && data.meterai_terjual_qris !== null) ? data.meterai_terjual_qris : '';
+      document.getElementById('pendapatan_qris').value = (data.pendapatan_qris !== undefined && data.pendapatan_qris !== null && data.pendapatan_qris !== 0) ? formatRp(data.pendapatan_qris) : (data.pendapatan_qris === 0 ? 'Rp 0' : '');
+
       document.getElementById('total_lembar_kasir').value = data.total_lembar_kasir ? formatRp(data.total_lembar_kasir) : '';
       document.getElementById('total_koin_kasir').value = data.total_koin_kasir ? formatRp(data.total_koin_kasir) : '';
       document.getElementById('pengeluaran_kasir').value = data.pengeluaran_kasir ? formatRp(data.pengeluaran_kasir) : '';
@@ -2143,10 +2089,12 @@
     } else {
       document.getElementById('stok_meterai_pagi').value = '';
       document.getElementById('stok_meterai_malam').value = '';
+      document.getElementById('meterai_terjual_qris').value = '';
       document.getElementById('total_lembar_kasir').value = '';
       document.getElementById('total_koin_kasir').value = '';
       document.getElementById('pengeluaran_kasir').value = '';
       document.getElementById('karyawan_masuk').value = 1;
+      document.getElementById('pendapatan_qris').value = '';
       chkOverrideA.checked = false;
       inputTabunganA.disabled = true;
       inputTabunganA.value = "Rp 45.000";
@@ -2161,8 +2109,7 @@
   } catch (err) {
     console.error("Gagal membaca data Kasir B:", err);
   } finally {
-    // 2. Kembalikan teks tanggal resmi dan aktifkan kembali tombol
-    dateDisplayB.innerText = formatDateIndonesia(d);
+    // 2. Kembalikan opasitas tanggal & aktifkan kembali tombol
     dateDisplayB.style.opacity = "1";
     btnHitungKasir.disabled = false;
   }
