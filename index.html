@@ -19,24 +19,28 @@
   <!-- Library html2canvas untuk Render & Unduh Gambar JPG -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
-  <style>
+<style>
   :root {
-    --bg-gradient-left: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
-    --bg-gradient-right: linear-gradient(135deg, #1e1b4b 0%, #4c1d95 100%);
-    --card-bg: rgba(255, 255, 255, 0.12);
-    --card-border: rgba(255, 255, 255, 0.2);
+    --bg-gradient-left: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    --bg-gradient-right: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --card-border: rgba(37, 99, 235, 0.2);
     
-    --blue-primary: #2563eb;
-    --blue-light: #3b82f6;
+    --blue-primary: #1d4ed8;
+    --blue-light: #2563eb;
     --blue-dark: #1e40af;
+    
+    --emerald-primary: #047857;
+    --emerald-light: #059669;
+    --emerald-dark: #064e3b;
     
     --purple-primary: #7c3aed;
     --purple-light: #a78bfa;
     --purple-dark: #581c87;
 
-    --text-light: #ffffff;
-    --text-sub: #bfdbfe;
-    --text-sub-purple: #ddd6fe;
+    --text-light: #1e3a8a;
+    --text-sub: #1d4ed8;
+    --text-sub-purple: #581c87;
   }
 
   * {
@@ -46,15 +50,15 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   }
 
-  body {
-    background: #090d16;
-    color: var(--text-light);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-  }
+body {
+  background: #0f172a; /* Slate 900 murni */
+  color: var(--text-light);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
 
   /* Container Main Split View */
   .app-container {
@@ -72,15 +76,15 @@
     flex: 1;
     height: 100%;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(29, 78, 216, 0.08);
     position: relative;
     overflow: hidden;
   }
 
-  /* --- SIDE KIRI STYLING (BIRU) --- */
+  /* --- SIDE KIRI STYLING (BLUE 700 LIGHT) --- */
   .side-left {
-    background: var(--bg-gradient-left);
-    border: 1px solid var(--card-border);
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border: 1px solid #93c5fd;
     perspective: 1000px;
     display: flex;
     flex-direction: column;
@@ -112,7 +116,7 @@
     padding: 20px;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.5);
   }
 
   .cover-container {
@@ -124,8 +128,8 @@
     overflow: hidden;
     border-radius: 12px;
     margin-bottom: 15px;
-    border: 1px solid var(--card-border);
-    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid #93c5fd;
+    background: #ffffff;
   }
 
   .cover-container img {
@@ -139,34 +143,34 @@
     padding: 16px;
     border-radius: 50px;
     border: none;
-    background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+    background: linear-gradient(90deg, #2563eb 0%, #1d4ed8 100%);
     color: white;
     font-size: 1.1rem;
     font-weight: 700;
     letter-spacing: 0.5px;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+    box-shadow: 0 4px 15px rgba(29, 78, 216, 0.3);
     transition: all 0.2s ease;
   }
 
   .btn-rounded:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(37, 99, 235, 0.6);
+    box-shadow: 0 6px 20px rgba(29, 78, 216, 0.45);
   }
 
   .btn-rounded-purple {
-    background: linear-gradient(90deg, #a78bfa 0%, #7c3aed 100%);
-    box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4);
+    background: linear-gradient(90deg, #047857 0%, #064e3b 100%);
+    box-shadow: 0 4px 15px rgba(6, 78, 59, 0.25);
   }
 
   .btn-rounded-purple:hover {
-    box-shadow: 0 6px 20px rgba(124, 58, 237, 0.6);
+    box-shadow: 0 6px 20px rgba(6, 78, 59, 0.4);
   }
 
   .flip-back {
     transform: rotateY(180deg);
     padding: 10px;
-    background: rgba(10, 20, 40, 0.98);
+    background: #ffffff;
   }
 
   .form-header {
@@ -177,18 +181,19 @@
   }
 
   .btn-back {
-    background: rgba(255, 255, 255, 0.15);
-    border: none;
-    color: white;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    color: #1d4ed8;
     padding: 6px 14px;
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.85rem;
+    font-weight: 600;
   }
 
   .date-section {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
     padding: 4px 10px;
     border-radius: 10px;
     margin-bottom: 6px;
@@ -199,9 +204,9 @@
   }
 
   .date-section input[type="date"] {
-    background: rgba(255, 255, 255, 0.2);
-    border: 1px solid var(--card-border);
-    color: white;
+    background: #ffffff;
+    border: 1px solid #93c5fd;
+    color: #1d4ed8;
     padding: 6px 10px;
     border-radius: 8px;
     outline: none;
@@ -211,17 +216,17 @@
   .date-display {
     font-size: 0.95rem;
     font-weight: 600;
-    color: var(--text-sub);
+    color: #1d4ed8;
   }
 
-.table-container {
+  .table-container {
     flex: 1;
     min-height: 0;
     overflow: hidden;
-    border: 1px solid var(--card-border);
+    border: 1px solid #bfdbfe;
     border-radius: 10px;
-    background: rgba(0, 0, 0, 0.2);
-    display: block; /* Pastikan memblok penuh area flex yang tersisa */
+    background: #ffffff;
+    display: block;
   }
 
   .table-kasir {
@@ -232,24 +237,24 @@
   }
 
   .table-kasir th {
-    background: var(--blue-dark);
+    background: #1d4ed8;
     color: white;
     padding: 0;
     font-size: 0.75rem;
-    height: 22px; /* Kunci fix tinggi header */
-    border: 1px solid var(--card-border);
+    height: 22px;
+    border: 1px solid #60a5fa;
     text-align: center;
     z-index: 2;
   }
 
   .table-kasir td {
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid #e2e8f0;
     padding: 0;
-    position: relative; /* Wadah penting agar input bisa absolute ke dalam sel */
+    position: relative;
   }
 
   .table-kasir input {
-    position: absolute; /* Melepas input dari flow tabel, sehingga tabel bisa menyusut maksimal mengikuti ukuran layar */
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -258,7 +263,7 @@
     box-sizing: border-box;
     background: transparent;
     border: none;
-    color: white;
+    color: #1e3a8a;
     text-align: right;
     padding: 0 4px;
     font-size: 0.75rem;
@@ -266,13 +271,13 @@
   }
 
   .table-kasir input:focus {
-    background: rgba(59, 130, 246, 0.3);
-    box-shadow: inset 0 0 0 2px var(--blue-light);
+    background: #eff6ff;
+    box-shadow: inset 0 0 0 2px #2563eb;
   }
 
   .table-kasir td.selected input {
-    background: rgba(59, 130, 246, 0.4) !important;
-    box-shadow: inset 0 0 0 1px var(--blue-light);
+    background: #dbeafe !important;
+    box-shadow: inset 0 0 0 1px #2563eb;
   }
 
   .footer-actions {
@@ -286,28 +291,29 @@
   .total-badge {
     font-size: 1rem;
     font-weight: bold;
-    color: #5eead4;
+    color: #1d4ed8;
   }
 
   .btn-save {
-    background: #10b981;
+    background: #1d4ed8;
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
     font-weight: 600;
     cursor: pointer;
+    box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);
     transition: background 0.2s;
   }
 
   .btn-save:hover {
-    background: #059669;
+    background: #1e40af;
   }
 
-  /* --- SIDE KANAN STYLING --- */
+  /* --- SIDE KANAN STYLING (PURPLE SOFT) --- */
   .side-right {
-    background: var(--bg-gradient-right);
-    border: 1px solid rgba(167, 139, 250, 0.3);
+    background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%);
+    border: 1px solid #ddd6fe;
     perspective: 1000px;
   }
 
@@ -326,14 +332,14 @@
     padding: 20px;
     align-items: center;
     justify-content: space-between;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.4);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   #slideRight2 {
     z-index: 2;
     padding: 18px;
-    background: rgba(15, 10, 30, 0.98);
+    background: #ffffff;
     transform: rotateY(180deg);
     transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
     opacity: 1;
@@ -359,28 +365,28 @@
   .form-group-block label {
     font-size: 0.85rem;
     font-weight: 600;
-    color: var(--text-sub-purple);
+    color: #6d28d9;
   }
 
   .form-control-custom {
     width: 100%;
     padding: 10px 12px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(167, 139, 250, 0.3);
+    background: #f8fafc;
+    border: 1px solid #ddd6fe;
     border-radius: 8px;
-    color: white;
+    color: #4c1d95;
     font-size: 0.95rem;
     outline: none;
   }
 
   .form-control-custom:focus {
-    border-color: var(--purple-light);
-    background: rgba(124, 58, 237, 0.15);
+    border-color: #7c3aed;
+    background: #faf5ff;
   }
 
   select.form-control-custom option {
-    background: #1e1b4b;
-    color: white;
+    background: #ffffff;
+    color: #4c1d95;
   }
 
   /* --- SLIDE 3 OVERLAY FULLSCREEN --- */
@@ -390,7 +396,8 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(9, 13, 22, 0.95);
+    background: rgba(6, 78, 59, 0.45);
+    backdrop-filter: blur(4px);
     z-index: 999;
     display: none;
     opacity: 0;
@@ -512,7 +519,7 @@
     font-size: 13px !important;
     font-weight: 700;
     margin-bottom: 4px;
-    color: #0f172a;
+    color: #064e3b;
     flex-shrink: 0;
     white-space: nowrap;
   }
@@ -541,7 +548,7 @@
   .section-title {
     font-size: 12px !important;
     font-weight: 700 !important;
-    color: #1e40af !important;
+    color: #047857 !important;
     text-transform: uppercase;
     margin-bottom: 3px !important;
     display: block;
@@ -561,7 +568,7 @@
 
   .sheet-row.row-bold {
     font-weight: 700 !important;
-    color: #0f172a;
+    color: #064e3b;
   }
 
   /* Catatan Rumus */
@@ -601,7 +608,7 @@
   .input-inline-sheet {
     border: 1px solid #cbd5e1;
     background: #fff;
-    color: #0f172a;
+    color: #064e3b;
     padding: 2px 4px !important;
     height: 24px !important;
     min-height: 24px !important;
@@ -666,8 +673,8 @@
     border: 1px solid #e2e8f0;
     border-radius: 24px;
     padding: 28px 32px;
-    color: #ffffff;
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+    color: #064e3b;
+    box-shadow: 0 12px 32px rgba(4, 120, 87, 0.1);
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -677,7 +684,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid #f1f5f9;
     padding-bottom: 12px;
   }
 
@@ -685,7 +692,7 @@
     font-size: 1.35rem;
     font-weight: 800;
     letter-spacing: 0.5px;
-    color: #f8fafc;
+    color: #064e3b;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -693,7 +700,7 @@
 
   .ios-guide-subtitle {
     font-size: 0.95rem;
-    color: #cbd5e1;
+    color: #047857;
     margin-bottom: 4px;
   }
 
@@ -704,8 +711,8 @@
   }
 
   .guide-item {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: #f0fdf4;
+    border: 1px solid #a7f3d0;
     padding: 10px 16px;
     border-radius: 14px;
     font-size: calc(0.9rem + 0.25vw);
@@ -713,10 +720,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #064e3b;
   }
 
   .guide-item .val {
-    color: #38bdf8;
+    color: #047857;
     font-weight: 700;
   }
 
@@ -724,7 +732,7 @@
     width: 22px;
     height: 22px;
     fill: none;
-    stroke: #38bdf8;
+    stroke: #047857;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -737,7 +745,7 @@
     left: 0 !important;
     width: 100vw !important;
     height: 100vh !important;
-    background: rgba(0, 0, 0, 0.75) !important;
+    background: rgba(6, 78, 59, 0.4) !important;
     z-index: 999999 !important;
     display: none;
     justify-content: center;
@@ -752,7 +760,7 @@
     max-width: 400px;
     padding: 32px 24px 24px 24px;
     text-align: center;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 25px 50px rgba(4, 120, 87, 0.15);
     position: relative;
     z-index: 10000000 !important;
     animation: popFromBottom 0.22s ease-out forwards;
@@ -771,7 +779,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 4px 10px rgba(190, 18, 60, 0.3);
+    box-shadow: 0 4px 10px rgba(190, 18, 60, 0.2);
     border: 4px solid #ffffff;
     transition: all 0.2s ease;
   }
@@ -782,7 +790,7 @@
   }
 
   .custom-modal-title {
-    color: #0f172a;
+    color: #064e3b;
     font-size: 1.15rem;
     font-weight: 700;
     margin-bottom: 12px;
@@ -820,8 +828,8 @@
   }
   
   .custom-modal-card.modal-success .custom-modal-icon-chip {
-    background: #10b981;
-    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    background: #047857;
+    box-shadow: 0 4px 10px rgba(4, 120, 87, 0.25);
   }
 
   .custom-modal-card.modal-success .custom-modal-text {
@@ -831,11 +839,11 @@
   }
 
   .custom-modal-card.modal-success .custom-modal-btn {
-    background: #10b981;
+    background: #047857;
   }
 
   .custom-modal-card.modal-success .custom-modal-btn:hover {
-    background: #059669;
+    background: #065f46;
   }
 
   /* Memberikan indentasi/jarak menjorok untuk sub-item */
@@ -880,136 +888,48 @@
     margin-right: 8px;
   }
   
-  /* --- SIDE TENGAH (CHIP HIJAU RAMPING) --- */
-  .side-center {
-    width: 210px;
-    flex: none;
-    height: 100%;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #064e3b 0%, #022c22 100%);
-    border: 1px solid rgba(52, 211, 153, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-    padding: 20px 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: border-box;
-    z-index: 5;
-  }
+  /* --- SIDE KANAN: MODUL QRIS MERCHANT (EMERALD 700 PERMANEN) --- */
+/* --- SIDE KANAN: MODUL QRIS MERCHANT (RED CRIMSON THEME) --- */
+.side-center {
+  flex: 1;
+  height: 100%;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
+  border: 1px solid #fecdd3;
+  box-shadow: 0 10px 30px rgba(159, 18, 57, 0.08);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
 
-  /* BRAND LOGO NJA */
-  .center-brand-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    text-align: center;
-    margin-top: 5px;
-  }
+/* --- BOTTOM NAV SWITCHER STYLING (ROUNDED CAPSULE) --- */
+.qris-tab-btn {
+  background: transparent;
+  color: #9f1239;
+  border-radius: 9999px !important; /* Shape kapsul bulat penuh */
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  .logo-nja-img {
-    width: 80px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 14px rgba(52, 211, 153, 0.4));
-  }
+/* Status Active / Selected: Pill Merah Tua & Teks/Ikon Putih */
+.qris-tab-btn.active {
+  background: #9f1239 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 12px rgba(159, 18, 57, 0.35);
+}
 
-  .brand-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-  }
-
-  .brand-title .title-main {
-    font-size: 0.95rem;
-    font-weight: 800;
-    color: #ffffff;
-    letter-spacing: 0.5px;
-  }
-
-  .brand-title .title-sub {
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: #6ee7b7;
-    letter-spacing: 0.3px;
-  }
-
-  /* WRAPPER TOMBOL PRESS & RAMPING */
-  .center-menu-chip-wrapper {
-    width: 100%;
-    background: rgba(6, 78, 59, 0.5);
-    border: 1px solid rgba(52, 211, 153, 0.25);
-    border-radius: 16px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    backdrop-filter: blur(10px);
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    margin-bottom: 5px;
-  }
-
-  /* TOMBOL LEBIH RINGKAS */
-  .btn-center-menu {
-    width: 100%;
-    padding: 10px 12px;
-    border-radius: 10px;
-    border: 1px solid rgba(52, 211, 153, 0.2);
-    background: rgba(255, 255, 255, 0.06);
-    color: #ecfdf5;
-    font-size: 0.8rem;
-    font-weight: 600;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    text-decoration: none;
-    box-sizing: border-box;
-  }
-
-  .btn-center-menu svg {
-    width: 16px;
-    height: 16px;
-    stroke: currentColor;
-    stroke-width: 2;
-    fill: none;
-    flex-shrink: 0;
-  }
-
-  /* AKSEN WARNA & HOVER PER TOMBOL */
-  .btn-center-menu.btn-riwayat { color: #38bdf8; }
-  .btn-center-menu.btn-riwayat:hover {
-    background: rgba(56, 189, 248, 0.18);
-    border-color: rgba(56, 189, 248, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .btn-center-menu.btn-portal { color: #c084fc; }
-  .btn-center-menu.btn-portal:hover {
-    background: rgba(192, 132, 252, 0.18);
-    border-color: rgba(192, 132, 252, 0.4);
-    transform: translateY(-2px);
-  }
-
-  .btn-center-menu.btn-about { color: #34d399; }
-  .btn-center-menu.btn-about:hover {
-    background: rgba(52, 211, 153, 0.18);
-    border-color: rgba(52, 211, 153, 0.4);
-    transform: translateY(-2px);
-  }
+.qris-tab-btn.active svg {
+  stroke: #ffffff !important;
+}
 
   /* --- MODAL RIWAYAT LAPORAN PENDAPATAN --- */
-/* --- MODAL RIWAYAT LAPORAN PENDAPATAN --- */
   .modal-riwayat-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(15, 23, 42, 0.45);
+    background: rgba(6, 78, 59, 0.4);
     backdrop-filter: blur(8px);
     z-index: 9999;
     display: flex;
@@ -1017,7 +937,6 @@
     align-items: center;
     padding: 15px;
     
-    /* Murni Fade-In & Fade-Out Ringan */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.2s ease, visibility 0.2s ease;
@@ -1033,27 +952,27 @@
     max-width: 520px;
     max-height: 90vh;
     background: #ffffff;
-    border: 1px solid #e2e8f0;
+    border: 1px solid #a7f3d0;
     border-radius: 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 20px 40px rgba(4, 120, 87, 0.15), 0 4px 12px rgba(0, 0, 0, 0.05);
   }
 
   .modal-riwayat-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 1px solid #ecfdf5;
     padding-bottom: 12px;
   }
 
   .modal-riwayat-header h3 {
     font-size: 1.05rem;
     font-weight: 700;
-    color: #0f172a;
+    color: #064e3b;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -1065,8 +984,8 @@
     flex: 1;
     min-height: 320px;
     max-height: 55vh;
-    background: #f1f5f9;
-    border: 2px dashed #cbd5e1;
+    background: #f0fdf4;
+    border: 2px dashed #a7f3d0;
     border-radius: 14px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -1084,14 +1003,14 @@
     max-width: 100%;
     height: auto;
     border-radius: 8px;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 14px rgba(4, 120, 87, 0.1);
     margin: 0 auto;
     display: block;
     flex-shrink: 0;
   }
 
   .viewer-placeholder {
-    color: #64748b;
+    color: #047857;
     font-size: 0.85rem;
     font-weight: 500;
     text-align: center;
@@ -1099,8 +1018,8 @@
   }
 
   .modal-riwayat-card .date-section {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
+    background: #f0fdf4;
+    border: 1px solid #a7f3d0;
     border-radius: 12px;
     padding: 8px 12px;
     display: flex;
@@ -1118,14 +1037,14 @@
     margin: 12px 0;
     padding: 0 8px;
     box-sizing: border-box;
-    color: #34d399;
+    color: #6ee7b7;
   }
 
   .cashier-svg {
     width: 100%;
     max-width: 160px;
     height: auto;
-    filter: drop-shadow(0 0 12px rgba(52, 211, 153, 0.45));
+    filter: drop-shadow(0 0 12px rgba(110, 231, 183, 0.45));
   }
 
   @keyframes receiptSlide {
@@ -1173,165 +1092,121 @@
 </head>
 <body>
 
-  <div class="app-container">
-  
+<!-- TOMBOL TRIGGER GEAR MELAYANG (Pojok Kanan Atas) -->
+<button class="fixed top-5 right-5 z-50 w-12 h-12 bg-emerald-700 hover:bg-emerald-800 text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-200 active:scale-95 border border-emerald-500/30" id="btnOpenSidebar" title="Buka Menu Navigasi">
+  <svg viewBox="0 0 24 24" class="w-6 h-6 stroke-current fill-none stroke-2 stroke-linecap-round stroke-linejoin-round">
+    <circle cx="12" cy="12" r="3"></circle>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+  </svg>
+</button>
 
+<!-- SIDEBAR OVERLAY & DRAWER NAVIGASI (LIGHT EMERALD 700 THEME) -->
+<div class="fixed inset-0 z-[9999] hidden transition-all duration-300 pointer-events-none" id="sidebarNavOverlay">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-slate-900/30 backdrop-blur-sm opacity-0 transition-opacity duration-300 ease-out pointer-events-auto" id="sidebarBackdrop"></div>
+
+  <!-- Drawer Panel -->
+  <div class="absolute top-0 right-0 h-full w-80 max-w-[85vw] bg-slate-50 border-l border-emerald-100 shadow-2xl flex flex-col justify-between p-5 transform translate-x-full transition-transform duration-300 ease-out pointer-events-auto" id="sidebarDrawer">
     
-    <!-- SIDE KIRI: KASIR A (BIRU) -->
-    <div class="side-panel side-left" id="sideLeft">
-      <div class="flip-card-inner">
-        
-        <!-- DEPAN: SAMPUL -->
-        <div class="flip-front">
-          <div class="cover-container">
-            <img src="https://lh3.googleusercontent.com/d/1Hx2qp_OtghEDoUVLLScCvLOSR495njGc=w1000" alt="Sampul Kasir A">
+    <!-- Top Content -->
+    <div>
+      <!-- Header Sidebar -->
+      <div class="flex items-center justify-between pb-4 border-b border-emerald-100/80 mb-5">
+        <div class="flex items-center gap-3">
+
+          <div>
+            <h4 class="font-extrabold text-slate-800 text-sm leading-tight tracking-wide">NURJAYA ABADI</h4>
+            <span class="text-[10px] font-bold text-emerald-700 uppercase tracking-wider block mt-0.5">HITUNG KASIR APP</span>
           </div>
-          <button class="btn-rounded" id="btnOpenKasir">CATAT TRANSAKSI</button>
         </div>
+        <button class="w-8 h-8 rounded-full bg-white hover:bg-emerald-100/60 border border-emerald-200/50 text-slate-500 hover:text-emerald-700 flex items-center justify-center transition-all active:scale-95 shadow-sm" id="btnCloseSidebar">
+          ✕
+        </button>
+      </div>
 
-        <!-- BELAKANG: MODAL FORM INPUT -->
-        <div class="flip-back">
-          <div class="form-header">
-            <h3 style="font-size: 1.1rem; color: var(--text-sub);">Buku Transaksi Penjualan</h3>
-            <button class="btn-back" id="btnCloseKasir">✕ Tutup</button>
+      <!-- Menu Navigation Items (Self-contained styles tanpa CSS lama) -->
+      <div class="flex flex-col gap-2.5">
+        
+        <!-- Item 1: Riwayat Kasir -->
+        <button type="button" class="w-full p-3 rounded-xl bg-white border border-emerald-200/60 text-emerald-950 font-bold text-xs flex items-center gap-3 shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition-all active:scale-[0.99] text-left cursor-pointer" id="btnOpenRiwayat">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100/60 text-emerald-700 flex items-center justify-center flex-shrink-0">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none stroke-[2] stroke-linecap-round stroke-linejoin-round">
+              <path d="M12 8v4l3 3"></path>
+              <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"></path>
+            </svg>
           </div>
+          <span class="flex-1">Riwayat Kasir</span>
+        </button>
 
-          <div class="date-section" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2);">
-  
-  <div class="date-display" id="dateDisplay" style="color: #ffffff; font-size: 0.9rem; font-weight: 600;">Pilih Tanggal</div>
-  
-  <div onclick="const p = document.getElementById('datePicker'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #2563eb; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
-    
-    <input type="date" id="datePicker" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
-    
-    <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;">
-      <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-      <line x1="16" y1="2" x2="16" y2="6"></line>
-      <line x1="8" y1="2" x2="8" y2="6"></line>
-      <line x1="3" y1="10" x2="21" y2="10"></line>
-    </svg>
-    <span style="pointer-events: none;">Pilih Tanggal</span>
+        <!-- Item 2: Portal NSA -->
+        <a href="https://nazakana.github.io/nsa/" target="_blank" class="w-full p-3 rounded-xl bg-white border border-emerald-200/60 text-emerald-950 font-bold text-xs flex items-center gap-3 shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition-all active:scale-[0.99] no-underline" id="btnPortalNSA">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100/60 text-emerald-700 flex items-center justify-center flex-shrink-0">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none stroke-[2] stroke-linecap-round stroke-linejoin-round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+          </div>
+          <span class="flex-1">Portal NSA</span>
+        </a>
+
+        <!-- Item 3: Tentang App -->
+        <button type="button" class="w-full p-3 rounded-xl bg-white border border-emerald-200/60 text-emerald-950 font-bold text-xs flex items-center gap-3 shadow-sm hover:bg-emerald-50 hover:border-emerald-300 transition-all active:scale-[0.99] text-left cursor-pointer" id="btnTentangApp">
+          <div class="w-8 h-8 rounded-lg bg-emerald-100/60 text-emerald-700 flex items-center justify-center flex-shrink-0">
+            <svg viewBox="0 0 24 24" class="w-4 h-4 stroke-current fill-none stroke-[2] stroke-linecap-round stroke-linejoin-round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 16v-4"></path>
+              <path d="M12 8h.01"></path>
+            </svg>
+          </div>
+          <span class="flex-1">Tentang App</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Footer Sidebar -->
+    <div class="pt-3 border-t border-emerald-100/80 text-center">
+      <span class="text-[11px] text-slate-400 font-semibold tracking-wide">Hitung Kasir NJA v1.0</span>
+    </div>
+
   </div>
+</div>
+
+<!-- CONTAINER UTAMA (SPLIT 3 RATA: KASIR A -> KASIR B -> VOID QRIS) -->
+<div class="app-container">
+  
+<!-- 1. SIDE KIRI: KASIR A (PENJUALAN - BLUE 700 THEME) -->
+  <div class="side-panel side-left" id="sideLeft" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #93c5fd;">
+    <div class="flip-card-inner">
+      
+<!-- DEPAN: SAMPUL (DEEP NAVY BLUE SCHEME - TIDAK TERLALU LIGHT & TIDAK GELAP) -->
+<div class="flip-front" style="background: linear-gradient(135deg, #172554 0%, #1e3a8a 100%); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; border: 2px solid #2563eb; box-shadow: 0 10px 25px rgba(23, 37, 84, 0.4);">
+  
+  <!-- WADAH GAMBAR DENGAN BORDER BIRU TUA -->
+  <div class="cover-container" style="border: 2px solid #3b82f6; background: #1e293b; border-radius: 12px; width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; margin-bottom: 15px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);">
+    <img src="https://lh3.googleusercontent.com/d/1Hx2qp_OtghEDoUVLLScCvLOSR495njGc=w1000" alt="Sampul Kasir A" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0.95);">
+  </div>
+  
+  <!-- TOMBOL UTAMA ROYAL BLUE -->
+  <button class="btn-rounded" id="btnOpenKasir" style="background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%); color: #ffffff; box-shadow: 0 4px 15px rgba(29, 78, 216, 0.45); font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50px; width: 100%; padding: 16px; cursor: pointer; transition: all 0.2s ease;">
+    CATAT TRANSAKSI
+  </button>
 
 </div>
 
-          <div class="table-container">
-            <table class="table-kasir">
-              <thead>
-                <tr>
-                  <th>Kolom 1</th>
-                  <th>Kolom 2</th>
-                  <th>Kolom 3</th>
-                  <th>Kolom 4</th>
-                  <th>Kolom 5</th>
-                  <th>Kolom 6</th>
-                </tr>
-              </thead>
-              <tbody id="tableBody">
-              </tbody>
-            </table>
-          </div>
-
-          <div class="footer-actions">
-            <div>Total: <span class="total-badge" id="lblTotal">Rp 0</span></div>
-            <button class="btn-save" id="btnSimpan">Simpan Data</button>
-          </div>
-        </div>
-
-      </div>
-    </div>
-	
-	  <!-- SIDE TENGAH: CHIP HIJAU RAMPING -->
-  <div class="side-panel side-center">
-    
-    <!-- BRAND LOGO -->
-    <div class="center-brand-logo">
-      <img src="https://lh3.googleusercontent.com/d/1l597cDOHNEE-B1G1vAbkeDaXfnMTycOO" alt="Logo NJA" class="logo-nja-img">
-      <div class="brand-title">
-        <span class="title-main">HITUNG KASIR</span>
-        <span class="title-sub">NURJAYA ABADI PHOTOCOPY</span>
-      </div>
-    </div>
-
-    <!-- ICON SVG KASIR ANIMATED LOOP -->
-    <div class="center-cashier-icon">
-      <svg class="cashier-svg" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-        <!-- Struk Belanja (Animated Loop Slide) -->
-        <g class="anim-receipt">
-          <path d="M24 18V8l4 2 4-2 4 2 4-2 4 2 4-2v10" stroke-width="2.5" stroke="#a7f3d0"/>
-          <line x1="28" y1="12" x2="40" y2="12" stroke-width="2" stroke="#a7f3d0"/>
-          <line x1="28" y1="15" x2="36" y2="15" stroke-width="2" stroke="#a7f3d0"/>
-        </g>
-        
-        <!-- Bodi Mesin Kasir / POS Terminal -->
-        <rect x="14" y="22" width="36" height="26" rx="4" stroke-width="2.5"/>
-        
-        <!-- Layar Kasir (Animated Pulse) -->
-        <rect class="anim-screen" x="18" y="26" width="28" height="12" rx="2" fill="rgba(52, 211, 153, 0.2)" stroke-width="2"/>
-        <line class="anim-screen" x1="22" y1="32" x2="32" y2="32" stroke-width="2"/>
-        
-        <!-- Laci Uang / Cash Drawer -->
-        <path d="M14 42h36v6a2 2 0 0 1-2 2H16a2 2 0 0 1-2-2v-6z" stroke-width="2.5"/>
-        <circle cx="32" cy="46" r="1.5" fill="currentColor"/>
-      </svg>
-    </div>
-
-    <!-- WRAPPER TOMBOL -->
-    <div class="center-menu-chip-wrapper">
-      <button class="btn-center-menu btn-riwayat" id="btnOpenRiwayat">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 8v4l3 3"></path>
-          <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"></path>
-        </svg>
-        <span>Riwayat Kasir</span>
-      </button>
-
-      <a href="https://nazakana.github.io/nsa/" target="_blank" class="btn-center-menu btn-portal" id="btnPortalNSA">
-        <svg viewBox="0 0 24 24">
-          <circle cx="12" cy="12" r="10"></circle>
-          <line x1="2" y1="12" x2="22" y2="12"></line>
-          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-        </svg>
-        <span>Portal NSA</span>
-      </a>
-
-      <button class="btn-center-menu btn-about" id="btnTentangApp">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <circle cx="12" cy="12" r="10"></circle>
-    <path d="M12 16v-4"></path>
-    <path d="M12 8h.01"></path>
-  </svg>
-  <span>Tentang App</span>
-</button>
-    </div>
-
-  </div>
-	
-
-  
-  
-    <!-- SIDE KANAN: KASIR B (UNGU) -->
-    <div class="side-panel side-right" id="sideRight">
-      
-      <!-- STEP 1: SAMPUL -->
-      <div class="slide-step-right" id="slideRight1">
-        <div class="cover-container" style="border-color: rgba(167, 139, 250, 0.3);">
-          <img src="https://lh3.googleusercontent.com/d/1wFP_qswqffTEA18V_h1QEM8S7MR6pDTI=w1000" alt="Sampul Tutup Kasir">
-        </div>
-        <button class="btn-rounded btn-rounded-purple" id="btnOpenKasirB">MULAI TUTUP KASIR</button>
-      </div>
-
-      <!-- STEP 2: INPUT DATA KUNCI -->
-      <div class="slide-step-right" id="slideRight2">
+      <!-- BELAKANG: MODAL FORM INPUT -->
+      <div class="flip-back" style="background: #ffffff;">
         <div class="form-header">
-          <h3 style="font-size: 1.1rem; color: var(--text-sub-purple);">Input Data Kunci</h3>
-          <button class="btn-back" id="btnBackToCoverB">← Kembali</button>
+          <h3 style="font-size: 1.1rem; color: #1d4ed8; font-weight: 700;">Buku Transaksi Penjualan</h3>
+          <button class="btn-back" id="btnCloseKasir" style="background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; font-weight: 600;">✕ Tutup</button>
         </div>
 
-        <div class="date-section" style="display: inline-flex; align-items: center; gap: 10px; background: rgba(255, 255, 255, 0.08); padding: 6px 12px; border-radius: 12px; border: 1px solid rgba(167, 139, 250, 0.3);">
-          <div class="date-display" id="dateDisplayB" style="color: var(--text-sub-purple); font-size: 0.9rem; font-weight: 600;">Pilih Tanggal</div>
-          <div onclick="const p = document.getElementById('datePickerB'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #7c3aed; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer;">
-            <input type="date" id="datePickerB" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
+        <div class="date-section" style="display: inline-flex; align-items: center; justify-content: space-between; gap: 10px; background: #f0f9ff; padding: 6px 12px; border-radius: 12px; border: 1px solid #bae6fd;">
+          <div class="date-display" id="dateDisplay" style="color: #0369a1; font-size: 0.9rem; font-weight: 700;">Pilih Tanggal</div>
+          
+          <div onclick="const p = document.getElementById('datePicker'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #1d4ed8; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; box-shadow: 0 2px 8px rgba(29, 78, 216, 0.25);">
+            <input type="date" id="datePicker" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
             <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;">
               <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
               <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -1342,57 +1217,323 @@
           </div>
         </div>
 
-        <div class="form-container-scroll">
-          <div class="form-group-block">
-            <label for="stok_meterai_pagi">a) Stok Meterai Pagi (buah)</label>
-            <input type="number" id="stok_meterai_pagi" class="form-control-custom no-scroll" placeholder="Contoh: 10">
-          </div>
-
-          <div class="form-group-block">
-            <label for="stok_meterai_malam">b) Stok Meterai Malam (buah)</label>
-            <input type="number" id="stok_meterai_malam" class="form-control-custom no-scroll" placeholder="Contoh: 5">
-          </div>
-
-          <div class="form-group-block">
-            <label for="meterai_terjual_qris">Penjualan Meterai QRIS (buah)</label>
-            <input type="number" id="meterai_terjual_qris" class="form-control-custom no-scroll" placeholder="Contoh: 2">
-          </div>
-
-          <div class="form-group-block">
-            <label for="total_lembar_kasir">c) Total Seluruh Uang Lembar di Laci Kasir</label>
-            <input type="text" id="total_lembar_kasir" class="form-control-custom input-rupiah" placeholder="Rp 0">
-          </div>
-
-          <div class="form-group-block">
-            <label for="total_koin_kasir">d) Total Seluruh Uang Koin di Laci Kasir</label>
-            <input type="text" id="total_koin_kasir" class="form-control-custom input-rupiah" placeholder="Rp 0">
-          </div>
-
-          <div class="form-group-block">
-            <label for="pengeluaran_kasir">e) Pengeluaran Kasir (non-Uang Makan)</label>
-            <input type="text" id="pengeluaran_kasir" class="form-control-custom input-rupiah" placeholder="Rp 0">
-          </div>
-
-          <div class="form-group-block">
-            <label for="karyawan_masuk">f) Jumlah Karyawan Masuk</label>
-            <select id="karyawan_masuk" class="form-control-custom">
-              <option value="1">1 Karyawan</option>
-              <option value="2">2 Karyawan</option>
-            </select>
-          </div>
-
-          <div class="form-group-block">
-            <label for="pendapatan_qris">Pendapatan QRIS</label>
-            <input type="text" id="pendapatan_qris" class="form-control-custom input-rupiah" placeholder="Rp 0">
-          </div>
+        <div class="table-container" style="border: 1px solid #bfdbfe; background: #ffffff;">
+          <table class="table-kasir">
+            <thead>
+              <tr style="background: #1d4ed8; color: #ffffff;">
+                <th style="background: #1d4ed8; color: #ffffff; border: 1px solid #3b82f6;">Kolom 1</th>
+                <th style="background: #1d4ed8; color: #ffffff; border: 1px solid #3b82f6;">Kolom 2</th>
+                <th style="background: #1d4ed8; color: #ffffff; border: 1px solid #3b82f6;">Kolom 3</th>
+                <th style="background: #1d4ed8; color: #ffffff; border: 1px solid #3b82f6;">Kolom 4</th>
+                <th style="background: #1d4ed8; color: #ffffff; border: 1px solid #3b82f6;">Kolom 5</th>
+                <th style="background: #1d4ed8; color: #ffffff; border: 1px solid #3b82f6;">Kolom 6</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+            </tbody>
+          </table>
         </div>
 
-        <button class="btn-rounded btn-rounded-purple" id="btnHitungKasir">Input Data dan Hitung</button>
+        <div class="footer-actions">
+          <div style="color: #334155; font-weight: 600;">Total: <span class="total-badge" id="lblTotal" style="color: #1d4ed8; font-weight: 800;">Rp 0</span></div>
+          <button class="btn-save" id="btnSimpan" style="background: #1d4ed8; color: #ffffff; border-radius: 20px; font-weight: 700; box-shadow: 0 4px 12px rgba(29, 78, 216, 0.25);">Simpan Data</button>
+        </div>
       </div>
 
     </div>
+  </div>
+
+<!-- 2. SIDE TENGAH: KASIR B (TUTUP KASIR - PURPLE SCHEME) -->
+  <div class="side-panel side-right" id="sideRight" style="background: linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%); border: 1px solid #ddd6fe;">
+    
+<!-- STEP 1: SAMPUL (DEEP PURPLE SCHEME - PURPLE TUA PEKAT) -->
+<div class="slide-step-right" id="slideRight1" style="background: linear-gradient(135deg, #3b0764 0%, #581c87 100%); border-radius: 20px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; border: 2px solid #7c3aed; box-shadow: 0 10px 25px rgba(59, 7, 100, 0.4);">
+  
+  <!-- WADAH GAMBAR DENGAN BORDER PURPLE -->
+  <div class="cover-container" style="border: 2px solid #a855f7; background: #2e1065; border-radius: 12px; width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; margin-bottom: 15px; box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);">
+    <img src="https://lh3.googleusercontent.com/d/1wFP_qswqffTEA18V_h1QEM8S7MR6pDTI=w1000" alt="Sampul Tutup Kasir" style="width: 100%; height: 100%; object-fit: contain; filter: brightness(0.95);">
+  </div>
+
+  <!-- TOMBOL UTAMA VIBRANT PURPLE -->
+  <button class="btn-rounded btn-rounded-purple" id="btnOpenKasirB" style="background: linear-gradient(90deg, #a855f7 0%, #6d28d9 100%); color: #ffffff; box-shadow: 0 4px 15px rgba(109, 40, 217, 0.45); font-weight: 700; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 50px; width: 100%; padding: 16px; cursor: pointer; transition: all 0.2s ease;">
+    MULAI TUTUP KASIR
+  </button>
+
+</div>
+    <!-- STEP 2: INPUT DATA KUNCI -->
+    <div class="slide-step-right" id="slideRight2" style="background: #ffffff;">
+      <div class="form-header">
+        <h3 style="font-size: 1.1rem; color: #6d28d9; font-weight: 700;">Input Data Kunci</h3>
+        <button class="btn-back" id="btnBackToCoverB" style="background: #faf5ff; color: #6d28d9; border: 1px solid #ddd6fe; font-weight: 600;">← Kembali</button>
+      </div>
+
+      <div class="date-section" style="display: inline-flex; align-items: center; justify-content: space-between; gap: 10px; background: #faf5ff; padding: 6px 12px; border-radius: 12px; border: 1px solid #ddd6fe;">
+        <div class="date-display" id="dateDisplayB" style="color: #6d28d9; font-size: 0.9rem; font-weight: 700;">Pilih Tanggal</div>
+        
+        <div onclick="const p = document.getElementById('datePickerB'); if(p.showPicker){ p.showPicker(); } else { p.click(); }" style="position: relative; display: inline-flex; align-items: center; gap: 6px; background: #7c3aed; color: #ffffff; padding: 6px 12px; border-radius: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);">
+          <input type="date" id="datePickerB" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; z-index: 1;">
+          <svg viewBox="0 0 24 24" style="width: 16px; height: 16px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; pointer-events: none;">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+            <line x1="16" y1="2" x2="16" y2="6"></line>
+            <line x1="8" y1="2" x2="8" y2="6"></line>
+            <line x1="3" y1="10" x2="21" y2="10"></line>
+          </svg>
+          <span style="pointer-events: none;">Pilih Tanggal</span>
+        </div>
+      </div>
+
+      <div class="form-container-scroll">
+        <div class="form-group-block">
+          <label for="stok_meterai_pagi" style="color: #6d28d9; font-weight: 600;">a) Stok Meterai Pagi (buah)</label>
+          <input type="number" id="stok_meterai_pagi" class="form-control-custom no-scroll" placeholder="Contoh: 10" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+        </div>
+
+        <div class="form-group-block">
+          <label for="stok_meterai_malam" style="color: #6d28d9; font-weight: 600;">b) Stok Meterai Malam (buah)</label>
+          <input type="number" id="stok_meterai_malam" class="form-control-custom no-scroll" placeholder="Contoh: 5" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+        </div>
+
+        <div class="form-group-block">
+          <label for="meterai_terjual_qris" style="color: #6d28d9; font-weight: 600;">Penjualan Meterai QRIS (buah)</label>
+          <input type="number" id="meterai_terjual_qris" class="form-control-custom no-scroll" placeholder="Contoh: 2" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+        </div>
+
+        <div class="form-group-block">
+          <label for="total_lembar_kasir" style="color: #6d28d9; font-weight: 600;">c) Total Seluruh Uang Lembar di Laci Kasir</label>
+          <input type="text" id="total_lembar_kasir" class="form-control-custom input-rupiah" placeholder="Rp 0" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+        </div>
+
+        <div class="form-group-block">
+          <label for="total_koin_kasir" style="color: #6d28d9; font-weight: 600;">d) Total Seluruh Uang Koin di Laci Kasir</label>
+          <input type="text" id="total_koin_kasir" class="form-control-custom input-rupiah" placeholder="Rp 0" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+        </div>
+
+        <div class="form-group-block">
+          <label for="pengeluaran_kasir" style="color: #6d28d9; font-weight: 600;">e) Pengeluaran Kasir (non-Uang Makan)</label>
+          <input type="text" id="pengeluaran_kasir" class="form-control-custom input-rupiah" placeholder="Rp 0" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+        </div>
+
+        <div class="form-group-block">
+          <label for="karyawan_masuk" style="color: #6d28d9; font-weight: 600;">f) Jumlah Karyawan Masuk</label>
+          <select id="karyawan_masuk" class="form-control-custom" style="background: #f8fafc; border: 1px solid #ddd6fe; color: #4c1d95;">
+            <option value="1">1 Karyawan</option>
+            <option value="2">2 Karyawan</option>
+          </select>
+        </div>
+
+        <div class="form-group-block">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <label for="pendapatan_qris" style="color: #6d28d9; font-weight: 600;">Pendapatan QRIS (Otomatis)</label>
+    <!-- Tombol Sync Mini -->
+    <button type="button" onclick="syncPendapatanQrisToKasirB()" style="background: #faf5ff; border: 1px solid #ddd6fe; color: #7c3aed; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 6px; cursor: pointer;">
+      ↻ Sync QRIS
+    </button>
+  </div>
+  <!-- Input tetap pakai ID pendapatan_qris & class input-rupiah agar fungsi hitung Kasir B tidak break -->
+  <input type="text" id="pendapatan_qris" class="form-control-custom input-rupiah" placeholder="Rp 0" readonly style="background: #f3e8ff; border: 1px solid #c4b5fd; color: #5b21b6; font-weight: 700; cursor: not-allowed;">
+</div>
+      </div>
+
+      <button class="btn-rounded btn-rounded-purple" id="btnHitungKasir" style="background: linear-gradient(90deg, #8b5cf6 0%, #6d28d9 100%); color: #ffffff; box-shadow: 0 4px 15px rgba(109, 40, 217, 0.3);">Input Data dan Hitung</button>
+    </div>
 
   </div>
+
+<!-- 3. SIDE PALING KANAN: QRIS MERCHANT (RED CRIMSON THEME & BOTTOM NAV) -->
+<div class="side-panel side-center" id="sideCenter" style="padding: 12px; background: #ffffff; display: flex; flex-direction: column; justify-content: space-between; height: 100%; position: relative;">
+  
+<!-- HEADER MODUL (REVISI LOGO & TEXT) -->
+  <div class="form-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; border-bottom: 1px solid #ffe4e6; padding-bottom: 6px; flex-shrink: 0;">
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <!-- Gambar Logo QRIS.webp -->
+      <div style="height: 32px; display: flex; align-items: center; justify-content: center;">
+        <img src="QRIS.webp" alt="Logo QRIS" style="height: 100%; width: auto; object-fit: contain;">
+      </div>
+      <!-- Teks Merah Tebal Sedang: Merchant -->
+      <div>
+        <h3 style="font-size: 0.95rem; color: #9f1239; font-weight: 800; line-height: 1; text-transform: uppercase; letter-spacing: 0.5px;">Merchant Nurjaya</h3>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTAINER CONTENT SCROLLABLE -->
+  <div style="flex: 1; overflow-y: auto; padding-bottom: 8px; padding-right: 2px;">
+    
+<!-- 1. TAB DASHBOARD (FIT 100% NO SCROLL) -->
+<div class="qris-tab-content active" id="qrisDashboard" style="display: flex; flex-direction: column; gap: 6px; height: 100%; justify-content: space-between;">
+  
+  <!-- 1. CARD SALDO PREMIUM (SUPER COMPACT) -->
+  <div style="background: linear-gradient(135deg, #881337 0%, #9f1239 50%, #be123c 100%); border-radius: 10px; padding: 8px 12px; color: #ffffff; box-shadow: 0 4px 12px rgba(159, 18, 57, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.15); flex-shrink: 0;">
+    <div style="position: absolute; right: -15px; top: -15px; width: 70px; height: 70px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); pointer-events: none;"></div>
+    
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2px;">
+      <div style="display: flex; align-items: center; gap: 5px;">
+        <span style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; box-shadow: 0 0 6px #4ade80;"></span>
+        <span style="font-size: 0.62rem; font-weight: 700; color: #fecdd3; text-transform: uppercase; letter-spacing: 0.5px;">TRANSAKSI HARI INI</span>
+      </div>
+      <span style="font-size: 0.6rem; color: #ffe4e6; font-weight: 700; background: rgba(0, 0, 0, 0.25); padding: 1px 5px; border-radius: 4px;">QRIS</span>
+    </div>
+
+    <div id="lblQrisTotalHariIni" style="font-size: 1.25rem; font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">Rp 0</div>
+  </div>
+
+  <!-- 2. LOG TRANSAKSI HARI INI (RINGKAS & SCROLLABLE AREA ISINYA SAJA) -->
+  <div style="background: #ffffff; border: 1px solid #fecdd3; border-radius: 10px; padding: 6px 8px; display: flex; flex-direction: column; gap: 4px; flex: 1; min-height: 0; overflow: hidden;">
+    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ffe4e6; padding-bottom: 3px; flex-shrink: 0;">
+      <span style="font-size: 0.68rem; font-weight: 800; color: #881337; text-transform: uppercase;">RINCIAN TRANSAKSI HARI INI</span>
+      <span id="lblQrisCountToday" style="font-size: 0.6rem; font-weight: 700; color: #9f1239; background: #fff1f2; padding: 1px 5px; border-radius: 8px;">0 Item</span>
+    </div>
+
+    <!-- Header Tabel -->
+    <div style="display: flex; font-size: 0.62rem; font-weight: 700; color: #9f1239; background: #fff1f2; padding: 3px 6px; border-radius: 4px; flex-shrink: 0;">
+      <div style="width: 25%;">Waktu</div>
+      <div style="width: 45%;">Deskripsi</div>
+      <div style="width: 30%; text-align: right;">Nominal</div>
+    </div>
+
+    <!-- Scrollable Items (Hanya area ini yang scroll jika transaksi banyak) -->
+    <div id="qrisTodayLogList" style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 2px; padding-right: 2px;">
+      <div style="text-align: center; color: #9f1239; font-size: 0.68rem; padding: 10px;">Memuat transaksi...</div>
+    </div>
+  </div>
+
+  <!-- 3. FORM TRANSAKSI BARU (SIDE TO SIDE / BERDAMPINGAN KIRI-KANAN) -->
+  <div style="background: #fff1f2; border: 1px solid #fecdd3; border-radius: 10px; padding: 8px; display: flex; flex-direction: column; gap: 6px; flex-shrink: 0;">
+    <div style="font-size: 0.68rem; font-weight: 800; color: #881337; text-transform: uppercase; letter-spacing: 0.3px; border-bottom: 1px solid #ffe4e6; padding-bottom: 2px;">TRANSAKSI BARU</div>
+    
+    <!-- BARIS INPUT BERDAMPINGAN (50% KIRI - 50% KANAN) -->
+    <div style="display: flex; gap: 6px; align-items: center;">
+      <!-- Kiri: Nominal -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+        <label style="font-size: 0.62rem; font-weight: 700; color: #9f1239;">NOMINAL:</label>
+        <input type="text" id="qrisInputNominal" class="input-rupiah" placeholder="Rp 0" style="width: 100%; padding: 5px 7px; background: #ffffff; border: 1px solid #fecdd3; border-radius: 6px; color: #881337; font-size: 0.8rem; font-weight: 700; outline: none;">
+      </div>
+
+      <!-- Kanan: Deskripsi Penjualan -->
+      <div style="flex: 1; display: flex; flex-direction: column; gap: 2px;">
+        <label style="font-size: 0.62rem; font-weight: 700; color: #9f1239;">DESKRIPSI:</label>
+        <input type="text" id="qrisInputDeskripsi" placeholder="Print, Fotokopi..." style="width: 100%; padding: 5px 7px; background: #ffffff; border: 1px solid #fecdd3; border-radius: 6px; color: #881337; font-size: 0.78rem; outline: none;">
+      </div>
+    </div>
+
+    <!-- Tombol Simpan Transaksi -->
+    <button type="button" id="btnSimpanQris" style="width: 100%; padding: 7px; background: #9f1239; color: #ffffff; border: none; border-radius: 6px; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: background 0.2s; box-shadow: 0 2px 8px rgba(159, 18, 57, 0.2);" onmouseover="this.style.background='#881337'" onmouseout="this.style.background='#9f1239'">
+      Simpan Transaksi
+    </button>
+  </div>
+
+</div>
+
+    <!-- 2. TAB RIWAYAT HARIAN -->
+    <div class="qris-tab-content" id="qrisRiwayat" style="display: none; flex-direction: column; gap: 8px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 2px 0;">
+        <span style="font-size: 0.78rem; font-weight: 800; color: #881337;">AKUMULASI HARIAN (BULAN INI)</span>
+        <button type="button" id="btnRefreshQrisRiwayat" style="background: #fff1f2; border: 1px solid #fecdd3; color: #be123c; padding: 3px 8px; border-radius: 6px; font-size: 0.7rem; font-weight: 700; cursor: pointer;">↻ Refresh</button>
+      </div>
+      <div id="qrisRiwayatList" style="display: flex; flex-direction: column; gap: 6px;">
+        <div style="text-align: center; color: #be123c; font-size: 0.8rem; padding: 20px;">Memuat data...</div>
+      </div>
+    </div>
+
+    <!-- 3. TAB REKAP & TABLE AUTO-MERGE -->
+    <div class="qris-tab-content" id="qrisRekap" style="display: none; flex-direction: column; gap: 8px;">
+      <div style="display: flex; gap: 6px; align-items: center; background: #fff1f2; border: 1px solid #fecdd3; padding: 6px; border-radius: 8px;">
+        <select id="qrisSelectBulan" style="flex: 1; padding: 6px 8px; background: #ffffff; border: 1px solid #fecdd3; border-radius: 6px; color: #881337; font-size: 0.78rem; font-weight: 700; outline: none;">
+        </select>
+        <button type="button" id="btnLoadQrisRekap" style="background: #9f1239; color: #ffffff; border: none; padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; cursor: pointer;">Tampilkan</button>
+      </div>
+
+      <div style="border: 1px solid #fecdd3; border-radius: 8px; overflow: hidden; background: #ffffff;">
+        <table style="width: 100%; border-collapse: collapse; font-size: 0.72rem;">
+          <thead>
+            <tr style="background: #9f1239; color: #ffffff; text-align: left;">
+              <th style="padding: 6px; width: 30%;">Tanggal</th>
+              <th style="padding: 6px; width: 35%; text-align: right;">Total QRIS</th>
+              <th style="padding: 6px; width: 35%;">Rincian</th>
+            </tr>
+          </thead>
+          <tbody id="qrisRekapTableBody">
+            <tr>
+              <td colspan="3" style="text-align: center; padding: 12px; color: #64748b;">Pilih bulan dan klik Tampilkan.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+<!-- NAVBAR BOTTOM SEGMENTED SWITCHER (ROUNDED FULL CAPSULE) -->
+  <div style="display: flex; background: #ffffff; border-top: 1px solid #ffe4e6; padding: 6px 6px 0 6px; gap: 6px; flex-shrink: 0; margin-top: auto;">
+    
+    <button type="button" class="qris-tab-btn active" data-target="qrisDashboard" style="flex: 1; padding: 6px 8px; border: none; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; background: #9f1239; color: #ffffff;">
+      <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+        <rect x="14" y="14" width="7" height="7" rx="1"></rect>
+        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+      </svg>
+      <span>Dashboard</span>
+    </button>
+
+    <button type="button" class="qris-tab-btn" data-target="qrisRiwayat" style="flex: 1; padding: 6px 8px; border: none; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; background: transparent; color: #9f1239;">
+      <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+        <path d="M12 8v4l3 3"></path>
+        <path d="M3.05 11a9 9 0 1 1 .5 4m-.5 5v-5h5"></path>
+      </svg>
+      <span>Riwayat</span>
+    </button>
+
+    <button type="button" class="qris-tab-btn" data-target="qrisRekap" style="flex: 1; padding: 6px 8px; border: none; border-radius: 9999px; font-size: 0.7rem; font-weight: 700; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 3px; background: transparent; color: #9f1239;">
+      <svg viewBox="0 0 24 24" style="width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
+        <line x1="18" y1="20" x2="18" y2="10"></line>
+        <line x1="12" y1="20" x2="12" y2="4"></line>
+        <line x1="6" y1="20" x2="6" y2="14"></line>
+      </svg>
+      <span>Rekap</span>
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+<script>
+  const btnOpenSidebar = document.getElementById('btnOpenSidebar');
+  const btnCloseSidebar = document.getElementById('btnCloseSidebar');
+  const sidebarNavOverlay = document.getElementById('sidebarNavOverlay');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+  const sidebarDrawer = document.getElementById('sidebarDrawer');
+
+  function openSidebarNav() {
+    sidebarNavOverlay.classList.remove('hidden', 'pointer-events-none');
+    
+    // Memberikan jeda 1 frame agar animasi CSS smooth tanpa patah
+    requestAnimationFrame(() => {
+      sidebarBackdrop.classList.remove('opacity-0');
+      sidebarBackdrop.classList.add('opacity-100');
+      sidebarDrawer.classList.remove('translate-x-full');
+      sidebarDrawer.classList.add('translate-x-0');
+    });
+  }
+
+  function closeSidebarNav() {
+    sidebarBackdrop.classList.remove('opacity-100');
+    sidebarBackdrop.classList.add('opacity-0');
+    sidebarDrawer.classList.remove('translate-x-0');
+    sidebarDrawer.classList.add('translate-x-full');
+
+    setTimeout(() => {
+      sidebarNavOverlay.classList.add('hidden', 'pointer-events-none');
+    }, 300);
+  }
+
+  if (btnOpenSidebar) btnOpenSidebar.addEventListener('click', openSidebarNav);
+  if (btnCloseSidebar) btnCloseSidebar.addEventListener('click', closeSidebarNav);
+  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeSidebarNav);
+</script>
 
 
 
@@ -2894,6 +3035,369 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 </script>
+
+<script>
+// ==========================================
+// MODUL QRIS MERCHANT NURJAYA ABADI (CACHED + AUTO UPDATE)
+// ==========================================
+const API_URL_QRIS = "https://script.google.com/macros/s/AKfycbxODNMFu3uK9J9B-XRDMaJzK_Md0wSRx_AeqYBqrJl4ZmNH9DkqKe2JBCWnDNzaKz3Z/exec";
+
+// Elemen DOM
+const qrisTabBtns = document.querySelectorAll('.qris-tab-btn');
+const qrisTabContents = document.querySelectorAll('.qris-tab-content');
+
+const lblQrisTotalHariIni = document.getElementById('lblQrisTotalHariIni');
+const qrisInputNominal = document.getElementById('qrisInputNominal');
+const qrisInputDeskripsi = document.getElementById('qrisInputDeskripsi');
+const btnSimpanQris = document.getElementById('btnSimpanQris');
+
+const qrisRiwayatList = document.getElementById('qrisRiwayatList');
+const btnRefreshQrisRiwayat = document.getElementById('btnRefreshQrisRiwayat');
+
+const qrisSelectBulan = document.getElementById('qrisSelectBulan');
+const btnLoadQrisRekap = document.getElementById('btnLoadQrisRekap');
+const qrisRekapTableBody = document.getElementById('qrisRekapTableBody');
+
+// STATE CACHE & TIMER
+let isDashboardLoadedOnce = false; // Flag cache Dashboard
+let dashboardTimer = null; // Timer auto-update 5 menit
+
+// AUTO INIT SAAT HALAMAN SELESAI DIMUAT
+document.addEventListener('DOMContentLoaded', () => {
+  // Load data Dashboard pertama kali
+  loadQrisDashboardToday();
+
+  // Set Auto Update tiap 5 menit (300.000 ms)
+  if (!dashboardTimer) {
+    dashboardTimer = setInterval(() => {
+      loadQrisDashboardToday(true); // Background silent update
+    }, 5 * 60 * 1000);
+  }
+});
+
+// Navigasi Bottom Tab Switcher (State Active Merah Tua & Cache Logik)
+qrisTabBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Reset semua tab ke state normal (unselected)
+    qrisTabBtns.forEach(b => {
+      b.classList.remove('active');
+      b.style.background = 'transparent';
+      b.style.color = '#9f1239';
+    });
+    qrisTabContents.forEach(c => c.style.display = 'none');
+
+    // Set tab yang diklik menjadi Active (Merah Tua & Teks Putih)
+    btn.classList.add('active');
+    btn.style.background = '#9f1239';
+    btn.style.color = '#ffffff';
+
+    const targetId = btn.getAttribute('data-target');
+    const targetContent = document.getElementById(targetId);
+    if (targetContent) {
+      targetContent.style.display = 'flex';
+      
+      // LOGIKA CACHE TAB:
+      if (targetId === 'qrisDashboard') {
+        // HANYA load jika belum pernah dimuat sama sekali (First Load)
+        if (!isDashboardLoadedOnce) {
+          loadQrisDashboardToday();
+        }
+      } else if (targetId === 'qrisRiwayat') {
+        loadQrisRiwayatHarian();
+      } else if (targetId === 'qrisRekap') {
+        populateQrisBulanOptions();
+      }
+    }
+  });
+});
+
+// 1. DASHBOARD: AMBIL TOTAL & LOG TRANSAKSI BARIS HARIAN
+async function loadQrisDashboardToday(isBackgroundUpdate = false) {
+  const lblTotal = document.getElementById('lblQrisTotalHariIni');
+  const logContainer = document.getElementById('qrisTodayLogList');
+  const lblCount = document.getElementById('lblQrisCountToday');
+
+  if (!lblTotal || !logContainer) return;
+
+  // Jika bukan update background & belum dichache, tampilkan indikator memuat
+  if (!isBackgroundUpdate && !isDashboardLoadedOnce) {
+    lblTotal.innerText = "Memuat...";
+    logContainer.innerHTML = `<div style="text-align: center; color: #9f1239; font-size: 0.68rem; padding: 10px;">Memuat rincian transaksi...</div>`;
+  }
+
+  try {
+    const today = new Date();
+    const d = String(today.getDate()).padStart(2, '0');
+    const m = String(today.getMonth() + 1).padStart(2, '0');
+    const y = today.getFullYear();
+    const targetDateStr = `${d}/${m}/${y}`;
+
+    const res = await fetch(`${API_URL_QRIS}?tanggal=${targetDateStr}`);
+    const result = await res.json();
+
+    if (result.status === 'success' && Array.isArray(result.data)) {
+      // Set Total Rp
+      lblTotal.innerText = typeof formatRp === 'function' ? formatRp(result.totalQris || 0) : `Rp ${(result.totalQris || 0).toLocaleString('id-ID')}`;
+      
+      if (lblCount) lblCount.innerText = `${result.data.length} Item`;
+
+      if (result.data.length > 0) {
+        let htmlRows = '';
+        
+        // Render baris transaksi (Urutan paling baru di paling atas)
+        result.data.slice().reverse().forEach(row => {
+          const formattedNominal = typeof formatRp === 'function' ? formatRp(row.qris) : `Rp ${Number(row.qris).toLocaleString('id-ID')}`;
+          const timeText = row.timestamp || '-';
+          const descText = row.deskripsi || 'Non-Tunai QRIS';
+
+          htmlRows += `
+            <div style="display: flex; align-items: center; font-size: 0.68rem; padding: 3px 6px; border-bottom: 1px border-dashed #ffe4e6; background: #ffffff;">
+              <div style="width: 25%; font-weight: 600; color: #64748b;">${timeText}</div>
+              <div style="width: 45%; color: #334155; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="${descText}">${descText}</div>
+              <div style="width: 30%; text-align: right; font-weight: 800; color: #9f1239;">${formattedNominal}</div>
+            </div>
+          `;
+        });
+        logContainer.innerHTML = htmlRows;
+      } else {
+        logContainer.innerHTML = `<div style="text-align: center; color: #9f1239; font-size: 0.68rem; padding: 10px;">Belum ada transaksi QRIS hari ini.</div>`;
+      }
+    } else {
+      lblTotal.innerText = "Rp 0";
+      if (lblCount) lblCount.innerText = "0 Item";
+      logContainer.innerHTML = `<div style="text-align: center; color: #9f1239; font-size: 0.68rem; padding: 10px;">Belum ada transaksi QRIS hari ini.</div>`;
+    }
+
+    // Tandai bahwa data sudah tersimpan di cache
+    isDashboardLoadedOnce = true;
+
+  } catch (err) {
+    console.error("Gagal muat log QRIS hari ini:", err);
+    if (!isDashboardLoadedOnce) {
+      lblTotal.innerText = "Rp 0";
+      logContainer.innerHTML = `<div style="text-align: center; color: #be123c; font-size: 0.68rem; padding: 10px;">Gagal memuat log transaksi.</div>`;
+    }
+  }
+}
+
+// 1. DASHBOARD: SIMPAN TRANSAKSI BARU (doPost + INSTANT REFRESH SEKETIKA)
+if (btnSimpanQris) {
+  btnSimpanQris.addEventListener('click', async () => {
+    const rawNominal = typeof unformatRupiah === 'function' ? unformatRupiah(qrisInputNominal.value) : parseInt(qrisInputNominal.value.replace(/[^0-9]/g, ''), 10) || 0;
+    const deskripsi = qrisInputDeskripsi.value.trim();
+
+    if (rawNominal <= 0) {
+      if (typeof showCustomModal === 'function') {
+        showCustomModal('PEMBERITAHUAN', 'Mohon masukkan nominal transaksi QRIS yang valid!');
+      } else {
+        alert('Mohon masukkan nominal transaksi QRIS yang valid!');
+      }
+      return;
+    }
+
+    btnSimpanQris.disabled = true;
+    btnSimpanQris.innerText = "Menyimpan...";
+
+    try {
+      const payload = {
+        action: "add",
+        qris: rawNominal,
+        deskripsi: deskripsi || "Non-Tunai QRIS"
+      };
+
+      await fetch(API_URL_QRIS, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      // Clear input form
+      qrisInputNominal.value = '';
+      qrisInputDeskripsi.value = '';
+
+      const formattedNominal = typeof formatRp === 'function' ? formatRp(rawNominal) : `Rp ${rawNominal.toLocaleString('id-ID')}`;
+
+      // Notifikasi Sukses
+      if (typeof showCustomModal === 'function') {
+        showCustomModal('SUKSES', `Transaksi QRIS sebesar ${formattedNominal} berhasil disimpan!`);
+      } else {
+        alert(`Transaksi QRIS sebesar ${formattedNominal} berhasil disimpan!`);
+      }
+
+      // INSTANT REFRESH SEKETIKA
+      await loadQrisDashboardToday(true);
+
+    } catch (err) {
+      console.error(err);
+      if (typeof showCustomModal === 'function') {
+        showCustomModal('GAGAL', 'Gagal menyimpan transaksi: ' + err.message);
+      } else {
+        alert('Gagal menyimpan transaksi: ' + err.message);
+      }
+    } finally {
+      btnSimpanQris.disabled = false;
+      btnSimpanQris.innerText = "Simpan Transaksi";
+    }
+  });
+}
+
+// 2. RIWAYAT: AMBIL CHIP AKUMULASI HARIAN BULAN BERJALAN
+async function loadQrisRiwayatHarian() {
+  if (!qrisRiwayatList) return;
+  qrisRiwayatList.innerHTML = `<div style="text-align:center; color:#9f1239; font-size:0.8rem; padding:15px;">Memuat akumulasi harian...</div>`;
+
+  try {
+    const res = await fetch(API_URL_QRIS);
+    const result = await res.json();
+
+    if (result.status === 'success' && result.data && result.data.length > 0) {
+      // Grouping per tanggal
+      const grouped = {};
+      result.data.forEach(item => {
+        const tgl = item.tanggal;
+        if (!grouped[tgl]) grouped[tgl] = 0;
+        grouped[tgl] += Number(item.qris) || 0;
+      });
+
+      let html = '';
+      Object.keys(grouped).reverse().forEach(tgl => {
+        const valNominal = typeof formatRp === 'function' ? formatRp(grouped[tgl]) : `Rp ${grouped[tgl].toLocaleString('id-ID')}`;
+        html += `
+          <div style="background: #ffffff; border: 1px solid #fecdd3; border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(159, 18, 57, 0.05);">
+            <div>
+              <div style="font-size: 0.7rem; color: #64748b; font-weight: 600;">Tanggal</div>
+              <div style="font-size: 0.82rem; font-weight: 800; color: #881337;">${tgl}</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.7rem; color: #9f1239; font-weight: 600;">Total Akumulasi</div>
+              <div style="font-size: 0.9rem; font-weight: 800; color: #be123c;">${valNominal}</div>
+            </div>
+          </div>
+        `;
+      });
+      qrisRiwayatList.innerHTML = html;
+    } else {
+      qrisRiwayatList.innerHTML = `<div style="text-align:center; color:#9f1239; font-size:0.8rem; padding:15px;">Belum ada riwayat transaksi QRIS bulan ini.</div>`;
+    }
+  } catch (err) {
+    console.error(err);
+    qrisRiwayatList.innerHTML = `<div style="text-align:center; color:#be123c; font-size:0.8rem; padding:15px;">Gagal memuat data riwayat.</div>`;
+  }
+}
+
+if (btnRefreshQrisRiwayat) {
+  btnRefreshQrisRiwayat.addEventListener('click', loadQrisRiwayatHarian);
+}
+
+// 3. REKAP: ISI OPSI BULAN & MERGE DATA TABEL
+function populateQrisBulanOptions() {
+  if (!qrisSelectBulan) return;
+  const bulanIndo = [
+    "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+    "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+  ];
+  
+  const now = new Date();
+  const currentMonthIdx = now.getMonth();
+  const currentYear = now.getFullYear();
+
+  let options = '';
+  // Generate 6 bulan ke belakang
+  for (let i = 0; i < 6; i++) {
+    let d = new Date(currentYear, currentMonthIdx - i, 1);
+    let name = bulanIndo[d.getMonth()] + d.getFullYear();
+    let label = bulanIndo[d.getMonth()] + " " + d.getFullYear();
+    options += `<option value="${name}">${label}</option>`;
+  }
+  qrisSelectBulan.innerHTML = options;
+  loadQrisRekapTable();
+}
+
+async function loadQrisRekapTable() {
+  if (!qrisRekapTableBody || !qrisSelectBulan) return;
+  const selectedBulan = qrisSelectBulan.value;
+
+  qrisRekapTableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:12px; color:#9f1239;">Memuat tabel rekap...</td></tr>`;
+
+  try {
+    const res = await fetch(`${API_URL_QRIS}?bulan=${encodeURIComponent(selectedBulan)}`);
+    const result = await res.json();
+
+    if (result.status === 'success' && result.data && result.data.length > 0) {
+      // Algoritma Merge per Tanggal
+      const mergedMap = {};
+
+      result.data.forEach(item => {
+        const tgl = item.tanggal;
+        const qrisVal = Number(item.qris) || 0;
+        const descVal = item.deskripsi ? String(item.deskripsi).trim() : '';
+
+        if (!mergedMap[tgl]) {
+          mergedMap[tgl] = {
+            totalQris: 0,
+            deskripsiList: []
+          };
+        }
+
+        mergedMap[tgl].totalQris += qrisVal;
+        if (descVal && !mergedMap[tgl].deskripsiList.includes(descVal)) {
+          mergedMap[tgl].deskripsiList.push(descVal);
+        }
+      });
+
+      let rowsHtml = '';
+      Object.keys(mergedMap).forEach(tgl => {
+        const rowData = mergedMap[tgl];
+        const descCombined = rowData.deskripsiList.length > 0 ? rowData.deskripsiList.join(', ') : '-';
+        const valNominal = typeof formatRp === 'function' ? formatRp(rowData.totalQris) : `Rp ${rowData.totalQris.toLocaleString('id-ID')}`;
+
+        rowsHtml += `
+          <tr style="border-bottom: 1px solid #ffe4e6;">
+            <td style="padding: 6px; font-weight: 700; color: #881337; white-space: nowrap;">${tgl}</td>
+            <td style="padding: 6px; font-weight: 800; color: #be123c; text-align: right; white-space: nowrap;">${valNominal}</td>
+            <td style="padding: 6px; color: #334155; word-break: break-word;">${descCombined}</td>
+          </tr>
+        `;
+      });
+
+      qrisRekapTableBody.innerHTML = rowsHtml;
+
+    } else {
+      qrisRekapTableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:12px; color:#64748b;">Tidak ada data transaksi di bulan ${selectedBulan}.</td></tr>`;
+    }
+
+  } catch (err) {
+    console.error(err);
+    qrisRekapTableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; padding:12px; color:#be123c;">Gagal memuat rekap data.</td></tr>`;
+  }
+}
+
+if (btnLoadQrisRekap) {
+  btnLoadQrisRekap.addEventListener('click', loadQrisRekapTable);
+}
+
+// ==========================================
+// AUTO SYNC PENDAPATAN QRIS KE FORM KASIR B
+// ==========================================
+function syncPendapatanQrisToKasirB() {
+  const lblTotalQrisHariIni = document.getElementById('lblQrisTotalHariIni');
+  const inputPendapatanQrisB = document.getElementById('pendapatan_qris');
+
+  if (lblTotalQrisHariIni && inputPendapatanQrisB) {
+    // Ambil nilai dari card total QRIS Hari Ini (misal "Rp 56.000")
+    const totalText = lblTotalQrisHariIni.innerText || "Rp 0";
+    
+    // Setel ke input Kasir B
+    inputPendapatanQrisB.value = totalText;
+
+    // Trigger event 'input' & 'change' agar script kalkulasi hitung otomatis Kasir B mendeteksi perubahan nilainya
+    inputPendapatanQrisB.dispatchEvent(new Event('input', { bubbles: true }));
+    inputPendapatanQrisB.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+}
+</script>
+
 
 </body>
 </html>
