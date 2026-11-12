@@ -2867,6 +2867,7 @@ if (modalAboutOverlay) {
 }
 </script>
 
+
 <!-- ================= MODAL ALERT UNIVERSAL CLOUD FOTOKOPI ================= -->
 <div id="modal-alert-fotokopi" 
      class="fixed inset-0 z-[999999] hidden items-end justify-center p-4 sm:p-6 bg-slate-900/40 backdrop-blur-sm opacity-0 transition-opacity duration-200 ease-out select-none"
@@ -2877,9 +2878,25 @@ if (modalAboutOverlay) {
          onclick="event.stopPropagation();" 
          class="bg-white w-full max-w-sm rounded-[32px] p-6 text-center shadow-2xl border border-slate-100 transform translate-y-8 transition-all duration-200 ease-out space-y-4 mb-2 pointer-events-auto">
         
-        <!-- Wadah Ikon Lingkaran Pastel -->
-        <div id="fotokopi-alert-icon-box" class="mx-auto w-20 h-20 rounded-full flex items-center justify-center text-3xl transition-colors">
-            <i id="fotokopi-alert-icon" class="fa-solid"></i>
+        <!-- Wadah Ikon Lingkaran Pastel Bergetar -->
+        <div class="relative mx-auto w-20 h-20 flex items-center justify-center">
+            
+            <!-- Gelombang Getar Melengkung Kiri (Vibration Waves Left) -->
+            <div id="fotokopi-wave-l" class="absolute right-[82px] flex items-center gap-1 opacity-0 pointer-events-none">
+                <span class="w-1.5 h-6 rounded-full border-l-[2px] border-current opacity-40"></span>
+                <span class="w-2 h-10 rounded-full border-l-[2.5px] border-current"></span>
+            </div>
+            
+            <!-- Lingkaran Pastel Ikon -->
+            <div id="fotokopi-alert-icon-box" class="w-20 h-20 rounded-full flex items-center justify-center text-3xl transition-all duration-300 transform-gpu z-10">
+                <i id="fotokopi-alert-icon" class="fa-solid"></i>
+            </div>
+
+            <!-- Gelombang Getar Melengkung Kanan (Vibration Waves Right) -->
+            <div id="fotokopi-wave-r" class="absolute left-[82px] flex items-center gap-1 opacity-0 pointer-events-none flex-row-reverse">
+                <span class="w-1.5 h-6 rounded-full border-r-[2px] border-current opacity-40"></span>
+                <span class="w-2 h-10 rounded-full border-r-[2.5px] border-current"></span>
+            </div>
         </div>
 
         <!-- Wadah Teks Informasi -->
@@ -2898,13 +2915,79 @@ if (modalAboutOverlay) {
     </div>
 </div>
 
+<!-- GAYA KHUSUS ANIMASI GETARAN & RIPPLE WAVE (VIBRATE) -->
+<style>
+    @keyframes getarLonceng {
+        0%, 100% { transform: rotate(0deg); }
+        15% { transform: rotate(-6deg); }
+        30% { transform: rotate(5deg); }
+        45% { transform: rotate(-4deg); }
+        60% { transform: rotate(3deg); }
+        75% { transform: rotate(-2deg); }
+        90% { transform: rotate(1deg); }
+    }
+    
+    @keyframes memancarKiri {
+        0% { opacity: 0; transform: translateX(5px) scaleY(0.85); }
+        30% { opacity: 0.9; transform: translateX(-3px) scaleY(1); }
+        70% { opacity: 0.6; transform: translateX(-8px) scaleY(1.05); }
+        100% { opacity: 0; transform: translateX(-15px) scaleY(0.9); }
+    }
+    
+    @keyframes memancarKanan {
+        0% { opacity: 0; transform: translateX(-5px) scaleY(0.85); }
+        30% { opacity: 0.9; transform: translateX(3px) scaleY(1); }
+        70% { opacity: 0.6; transform: translateX(8px) scaleY(1.05); }
+        100% { opacity: 0; transform: translateX(15px) scaleY(0.9); }
+    }
+
+    .vibrate-aktif {
+        animation: getarLonceng 0.45s cubic-bezier(.36, .07, .19, .97) both;
+    }
+    
+    /* 'forwards' mengunci state 100% (opacity: 0) agar gelombang hilang total setelah selesai */
+    .wave-kiri-aktif {
+        animation: memancarKiri 0.45s ease-out 2 forwards;
+    }
+    .wave-kanan-aktif {
+        animation: memancarKanan 0.45s ease-out 2 forwards;
+    }
+</style>
+
 <script>
 // ====================================================================
-// SYSTEM ALERT & OVERRIDE FOTOKOPI (ISOLATED & PROMISE-BASED)
+// SYSTEM ALERT & OVERRIDE FOTOKOPI (ISOLATED & PROMISE-BASED + AUDIO)
 // ====================================================================
 
 let resolveAlertPromise = null;
 let bodyOverflowSebelumnya = '';
+
+// Preload Audio Notifikasi (Isolasi khusus Alert Fotokopi)
+const audioAlertSukses = new Audio('assets/sukses.wav');
+const audioAlertError = new Audio('assets/error.wav');
+audioAlertSukses.preload = 'auto';
+audioAlertError.preload = 'auto';
+audioAlertSukses.volume = 0.85;
+audioAlertError.volume = 0.85;
+
+function putarAudioAlertFotokopi(tipe) {
+    try {
+        audioAlertSukses.pause();
+        audioAlertSukses.currentTime = 0;
+        audioAlertError.pause();
+        audioAlertError.currentTime = 0;
+
+        const targetAudio = (tipe === 'sukses') ? audioAlertSukses : audioAlertError;
+        const playPromise = targetAudio.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(err => {
+                console.warn('Audio alert fotokopi dilewati:', err);
+            });
+        }
+    } catch (e) {
+        console.warn('Gagal memutar audio alert fotokopi:', e);
+    }
+}
 
 /**
  * GLOBAL OVERRIDE: Mengalihkan window.alert bawaan
@@ -2912,12 +2995,27 @@ let bodyOverflowSebelumnya = '';
 window.alert = function(pesan) {
     if (pesan === undefined || pesan === null) return Promise.resolve();
 
-    const kataKunciError = ['gagal', 'error', 'salah', 'periksa', 'ditolak', 'kosong', 'ulang', 'ulangi', 'tidak berhasil'];
-    const apakahError = kataKunciError.some(kata => String(pesan).toLowerCase().includes(kata));
+    const teks = String(pesan);
+    const teksKecil = teks.toLowerCase();
+
+    // Kata kunci untuk peringatan, error, akses terbatas, dan validasi input
+    const kataKunciError = [
+        'gagal', 'error', 'salah', 'periksa', 'ditolak', 'kosong',
+        'ulang', 'ulangi', 'tidak', 'terkunci', 'diblokir', 'akses',
+        'wajib', 'harus', 'peringatan', 'batal', 'habis', 'penuh',
+        'belum', 'invalid', 'batas', 'hanya dapat',
+        // Tambahan untuk validasi form / dropdown / instruksi
+        'silakan', 'pilih', 'isi ', 'lengkapi', 'masukkan', 'tentukan',
+        'minimal', 'maksimal', 'kurang', 'lebih', 'mohon', 'harap', 'dulu'
+    ];
+
+    const apakahError = kataKunciError.some(kata => teksKecil.includes(kata));
 
     const tipe = apakahError ? "error" : "sukses";
-    const judul = apakahError ? "Sistem Peringatan" : "Notifikasi Baru";
-    const deskripsiFormatted = String(pesan).replace(/\n/g, "<br>");
+    const judul = apakahError
+        ? (teksKecil.includes('terkunci') || teksKecil.includes('akses') ? "Akses Terbatas" : "Sistem Peringatan")
+        : "Notifikasi Baru";
+    const deskripsiFormatted = teks.replace(/\n/g, "<br>");
 
     return bukaAlertFotokopi(tipe, judul, deskripsiFormatted);
 };
@@ -2927,7 +3025,6 @@ window.alert = function(pesan) {
  */
 function bukaAlertFotokopi(tipe, judul, deskripsi) {
     return new Promise((resolve) => {
-        // Jika masih ada alert aktif sebelumnya, selesaikan promise lama terlebih dahulu
         if (typeof resolveAlertPromise === 'function') {
             resolveAlertPromise();
         }
@@ -2937,6 +3034,8 @@ function bukaAlertFotokopi(tipe, judul, deskripsi) {
         const box = document.getElementById('fotokopi-box-content');
         const iconBox = document.getElementById('fotokopi-alert-icon-box');
         const icon = document.getElementById('fotokopi-alert-icon');
+        const waveL = document.getElementById('fotokopi-wave-l');
+        const waveR = document.getElementById('fotokopi-wave-r');
         const judulElem = document.getElementById('fotokopi-alert-judul');
         const deskripsiElem = document.getElementById('fotokopi-alert-deskripsi');
         const btn = document.getElementById('fotokopi-alert-btn');
@@ -2946,37 +3045,58 @@ function bukaAlertFotokopi(tipe, judul, deskripsi) {
             return;
         }
 
-        // Simpan gaya overflow body awal (hanya jika belum disimpan)
+        // Reset kelas animasi & force reflow agar restart selalu mulus
+        if (iconBox) {
+            iconBox.classList.remove('vibrate-aktif');
+            void iconBox.offsetWidth;
+        }
+        if (waveL) {
+            waveL.classList.remove('wave-kiri-aktif', 'text-emerald-400', 'text-rose-400');
+            void waveL.offsetWidth;
+        }
+        if (waveR) {
+            waveR.classList.remove('wave-kanan-aktif', 'text-emerald-400', 'text-rose-400');
+            void waveR.offsetWidth;
+        }
+
         if (!modal.classList.contains('flex')) {
             bodyOverflowSebelumnya = document.body.style.overflow;
         }
 
-        // Setel Teks
         if (judulElem) judulElem.innerHTML = judul;
         if (deskripsiElem) deskripsiElem.innerHTML = deskripsi;
 
-        // Setel Visual Tipe
         if (tipe === 'sukses') {
-            if (iconBox) iconBox.className = "mx-auto w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center text-3xl";
+            if (iconBox) iconBox.className = "w-20 h-20 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center text-3xl transition-all duration-300 transform-gpu z-10";
             if (icon) icon.className = "fa-solid fa-bell";
+            if (waveL) waveL.classList.add('text-emerald-400');
+            if (waveR) waveR.classList.add('text-emerald-400');
             if (btn) btn.className = "w-full py-3.5 bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold tracking-wide uppercase rounded-full shadow-lg shadow-emerald-200 active:scale-95 transition-all";
         } else {
-            if (iconBox) iconBox.className = "mx-auto w-20 h-20 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center text-3xl";
+            if (iconBox) iconBox.className = "w-20 h-20 bg-rose-50 text-rose-500 rounded-full flex items-center justify-center text-3xl transition-all duration-300 transform-gpu z-10";
             if (icon) icon.className = "fa-solid fa-triangle-exclamation";
+            if (waveL) waveL.classList.add('text-rose-400');
+            if (waveR) waveR.classList.add('text-rose-400');
             if (btn) btn.className = "w-full py-3.5 bg-rose-500 hover:bg-rose-600 text-white text-xs font-bold tracking-wide uppercase rounded-full shadow-lg shadow-rose-200 active:scale-95 transition-all";
         }
 
-        // Tampilkan Modal Alert
+        putarAudioAlertFotokopi(tipe);
+
         modal.classList.remove('hidden');
         modal.classList.add('flex');
         document.body.style.overflow = 'hidden';
 
-        // Trigger Animasi Slide Up
         requestAnimationFrame(() => {
             modal.classList.remove('opacity-0');
             modal.classList.add('opacity-100');
             box.classList.remove('translate-y-8');
             box.classList.add('translate-y-0');
+            
+            setTimeout(() => {
+                if (iconBox) iconBox.classList.add('vibrate-aktif');
+                if (waveL) waveL.classList.add('wave-kiri-aktif');
+                if (waveR) waveR.classList.add('wave-kanan-aktif');
+            }, 120);
         });
     });
 }
@@ -2996,7 +3116,6 @@ function tutupAlertFotokopi(e) {
 
     if (!modal || !box) return;
 
-    // Trigger Animasi Slide Down
     modal.classList.remove('opacity-100');
     modal.classList.add('opacity-0');
     box.classList.remove('translate-y-0');
@@ -3005,11 +3124,8 @@ function tutupAlertFotokopi(e) {
     setTimeout(() => {
         modal.classList.remove('flex');
         modal.classList.add('hidden');
-
-        // Kembalikan overflow body ke kondisi semula sebelum alert dipanggil
         document.body.style.overflow = bodyOverflowSebelumnya;
 
-        // Resolve Promise agar baris `await alert(...)` di kode utama dapat berlanjut
         if (typeof resolveAlertPromise === 'function') {
             const currentResolve = resolveAlertPromise;
             resolveAlertPromise = null;
@@ -3029,7 +3145,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         
-        // Mencegah Mousedown/Pointerdown Lolos ke Listener Modal Lain
         alertModal.addEventListener('mousedown', (e) => e.stopPropagation());
         alertModal.addEventListener('touchstart', (e) => e.stopPropagation());
     }
